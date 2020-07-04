@@ -13,7 +13,7 @@ class StatusItemBarViewModel {
     // MARK: - Properties
 
     let statusBarImageName = "icon"
-    let coreDataModelName = "Model"
+    let coreDataModelName = "CopyKeep"
 
     let quitMenuItemTitle = "Quit"
     let quitMenuItemKey = "q"
@@ -25,5 +25,8 @@ class StatusItemBarViewModel {
     let exportMenuItemKey = "e"
 
     let watchBoardCheckTimeFrequency = 1.0
+
+    let thresholdToForDuplicateCopy = 10
+    let maximumMenuItemsWithKeys = 10
 }
 

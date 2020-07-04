@@ -38,13 +38,19 @@ extension StatusBarItemController {
     // MARK: - Setup methods
 
     private func constructMenu() {
+
+        addSavedCopyItemsToMenu()
+
         menu.addItem(NSMenuItem.separator())
 
-        menu.addItem(NSMenuItem(
+        let clearMenuItem = NSMenuItem(
             title: statusBarItemVM.clearMenuItemTitle,
-            action: #selector(NSApplication.terminate(_:)),
+            action: #selector(StatusBarItemController.clearAllCopyItems(_:)),
             keyEquivalent: statusBarItemVM.clearMenuItemKey
-        ))
+        )
+        clearMenuItem.target = self
+
+        menu.addItem(clearMenuItem)
 
         menu.addItem(NSMenuItem(
             title: statusBarItemVM.exportMenuItemTitle,
@@ -80,6 +86,8 @@ extension StatusBarItemController {
     private func setup() {
         constructMenu()
 
+        coreDataManager?.delegate = self
+
         watchPasteboard { copiedContent in
             DispatchQueue.main.async {
                 if self.shouldCopyItemBeSaved(forCopiedContent: copiedContent) {
@@ -99,7 +107,7 @@ extension StatusBarItemController {
         }
 
         for (index, copyItem) in zip(copyItems.indices, copyItems) {
-            if index > 9 {
+            if index >= statusBarItemVM.thresholdToForDuplicateCopy {
                 break
             }
 
@@ -115,5 +123,85 @@ extension StatusBarItemController {
         copyItem.content = copiedContent
         copyItem.createdAt = Date()
         coreDataManager?.saveChanges()
+    }
+}
+
+extension StatusBarItemController: CoreDataManagerDelegate {
+    // MARK: - CoreDataManagerDelegate Methods
+
+    func newItemInserted(atIndex indexPath: IndexPath) {
+        guard let copyItem = coreDataManager?.getCopyItems()?.first else {
+            return
+        }
+
+        addCopyItemToMenu(copyItem: copyItem)
+        changeShortcutKeysForMenuItems()
+    }
+
+    func itemDeleted(atIndex index: IndexPath) {
+        menu.items.remove(at: index.item)
+        changeShortcutKeysForMenuItems()
+    }
+}
+
+
+extension StatusBarItemController {
+    // MARK: - Menu Items related methods
+
+    private func addCopyItemToMenu(copyItem: CopyItem) {
+        let menuItem = NSMenuItem(
+            title: copyItem.title,
+            action: #selector(StatusBarItemController.copyMenuItemTitleToPasteBoard(_:)),
+            keyEquivalent: ""
+        )
+        menuItem.target = self
+        menuItem.toolTip = copyItem.content
+        menu.insertItem(menuItem, at: 0)
+    }
+
+    private func addSavedCopyItemsToMenu() {
+        guard let copyItems = coreDataManager?.getCopyItems() else {
+            return
+        }
+
+        for copyItem in copyItems {
+            addCopyItemToMenu(copyItem: copyItem)
+        }
+
+        changeShortcutKeysForMenuItems()
+    }
+
+    private func changeShortcutKeysForMenuItems() {
+        for (counter, menuItem) in menu.items.enumerated() {
+            if counter == statusBarItemVM.maximumMenuItemsWithKeys || menuItem.isSeparatorItem {
+                menuItem.keyEquivalent = ""
+                break
+            }
+
+            menuItem.keyEquivalent = counter.description
+        }
+    }
+}
+
+extension StatusBarItemController {
+    // MARK: - User Interactions methods
+
+    @objc func clearAllCopyItems(_ sender: Any?) {
+        guard let copyItems = coreDataManager?.getCopyItems() else {
+            return
+        }
+
+        for _ in 0..<copyItems.count {
+            coreDataManager?.deleteItem(atIndex: IndexPath(item: 0, section: 0))
+        }
+    }
+
+    @objc func copyMenuItemTitleToPasteBoard(_ sender: Any?) {
+        guard let menuItem = sender as? NSMenuItem else {
+            return
+        }
+
+        pasteboard.clearContents()
+        pasteboard.setString(menuItem.title, forType: .string)
     }
 }

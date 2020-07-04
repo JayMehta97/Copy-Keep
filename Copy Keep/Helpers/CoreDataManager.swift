@@ -9,6 +9,11 @@
 import CoreData
 import Foundation
 
+protocol CoreDataManagerDelegate {
+    func newItemInserted(atIndex index: IndexPath)
+    func itemDeleted(atIndex index: IndexPath)
+}
+
 class CoreDataManager: NSObject {
 
     // MARK: - Type Aliases
@@ -21,19 +26,7 @@ class CoreDataManager: NSObject {
     private let completion: CoreDataManagerCompletion
     private var fetchedRC: NSFetchedResultsController<CopyItem>?
 
-    // MARK: - Initialization
-
-    public init(modelName: String, completion: @escaping CoreDataManagerCompletion) {
-
-        // Set Properties
-        self.modelName = modelName
-        self.completion = completion
-
-        super.init()
-
-        // Setup Core Data Stack
-        setupCoreDataStack()
-    }
+    var delegate: CoreDataManagerDelegate?
 
     // MARK: - Core Data Stack
 
@@ -75,6 +68,22 @@ class CoreDataManager: NSObject {
         return NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
     }()
 
+    // MARK: - Initialization
+
+    public init(modelName: String, completion: @escaping CoreDataManagerCompletion) {
+
+        // Set Properties
+        self.modelName = modelName
+        self.completion = completion
+
+        super.init()
+
+        // Setup Core Data Stack
+        setupCoreDataStack()
+    }
+}
+
+extension CoreDataManager {
     // MARK: - Public API
 
     public func saveChanges() {
@@ -114,7 +123,9 @@ class CoreDataManager: NSObject {
     public func getCopyItems() -> [CopyItem]? {
         return fetchedRC?.fetchedObjects ?? nil
     }
+}
 
+extension CoreDataManager {
     // MARK: - Helper Methods
 
     private func setupCoreDataStack() {
@@ -178,6 +189,16 @@ class CoreDataManager: NSObject {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
+
+    func deleteItem(atIndex index: IndexPath) {
+        guard let item = fetchedRC?.object(at: index) else {
+            return
+        }
+
+        mainManagedObjectContext.delete(mainManagedObjectContext.object(with: item.objectID))
+
+        saveChanges()
+    }
 }
 
 extension CoreDataManager: NSFetchedResultsControllerDelegate {
@@ -189,13 +210,13 @@ extension CoreDataManager: NSFetchedResultsControllerDelegate {
         guard let cellIndex = index else {
             return
         }
-        print(cellIndex)
 
         switch type {
         case .insert:
-            print("insert")
+
+            delegate?.newItemInserted(atIndex: cellIndex)
         case .delete:
-            print("delete")
+            delegate?.itemDeleted(atIndex: cellIndex)
         case.update:
             print("update")
         default:
