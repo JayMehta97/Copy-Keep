@@ -8,19 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		E523C16824B0DC24003417F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523C16724B0DC24003417F4 /* AppDelegate.swift */; };
-		E523C16A24B0DC24003417F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523C16924B0DC24003417F4 /* ViewController.swift */; };
+		E523C16A24B0DC24003417F4 /* StatusBarItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523C16924B0DC24003417F4 /* StatusBarItemController.swift */; };
 		E523C16C24B0DC27003417F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E523C16B24B0DC27003417F4 /* Assets.xcassets */; };
 		E523C16F24B0DC27003417F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E523C16D24B0DC27003417F4 /* Main.storyboard */; };
+		E523C17E24B0DE9C003417F4 /* StatusItemBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523C17D24B0DE9C003417F4 /* StatusItemBarViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E523C16424B0DC24003417F4 /* Copy Keep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Copy Keep.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E523C16724B0DC24003417F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E523C16924B0DC24003417F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E523C16924B0DC24003417F4 /* StatusBarItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarItemController.swift; sourceTree = "<group>"; };
 		E523C16B24B0DC27003417F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E523C16E24B0DC27003417F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E523C17024B0DC27003417F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E523C17124B0DC27003417F4 /* Copy_Keep.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Copy_Keep.entitlements; sourceTree = "<group>"; };
+		E523C17D24B0DE9C003417F4 /* StatusItemBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemBarViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,8 @@
 		E523C16624B0DC24003417F4 /* Copy Keep */ = {
 			isa = PBXGroup;
 			children = (
+				E523C17C24B0DE87003417F4 /* ViewModels */,
+				E523C17B24B0DE0D003417F4 /* Controllers */,
 				E523C17924B0DCDE003417F4 /* View */,
 				E523C17824B0DCD3003417F4 /* Resources */,
 				E523C17724B0DCC5003417F4 /* Generated */,
@@ -64,7 +68,6 @@
 			isa = PBXGroup;
 			children = (
 				E523C16724B0DC24003417F4 /* AppDelegate.swift */,
-				E523C16924B0DC24003417F4 /* ViewController.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -93,6 +96,22 @@
 				E523C16D24B0DC27003417F4 /* Main.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		E523C17B24B0DE0D003417F4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E523C16924B0DC24003417F4 /* StatusBarItemController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E523C17C24B0DE87003417F4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E523C17D24B0DE9C003417F4 /* StatusItemBarViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,7 +184,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E523C16A24B0DC24003417F4 /* ViewController.swift in Sources */,
+				E523C16A24B0DC24003417F4 /* StatusBarItemController.swift in Sources */,
+				E523C17E24B0DE9C003417F4 /* StatusItemBarViewModel.swift in Sources */,
 				E523C16824B0DC24003417F4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,7 +321,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Copy Keep/Copy_Keep.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Copy Keep/Resources/Copy_Keep.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = M23Q7YJYU2;
@@ -321,7 +341,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Copy Keep/Copy_Keep.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Copy Keep/Resources/Copy_Keep.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = M23Q7YJYU2;

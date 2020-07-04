@@ -11,10 +11,13 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    var statusBarItemController: StatusBarItemController?
 
+    // MARK: - Application Life Cycle
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        statusBarItemController = StatusBarItemController()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
