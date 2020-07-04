@@ -13,5 +13,14 @@ class StatusItemBarViewModel {
     // MARK: - Properties
 
     let statusBarImageName = "icon"
+
+    let quitMenuItemTitle = "Quit"
+    let quitMenuItemKey = "q"
+
+    let clearMenuItemTitle = "Clear"
+    let clearMenuItemKey = "c"
+
+    let exportMenuItemTitle = "Export"
+    let exportMenuItemKey = "e"
 }
 
