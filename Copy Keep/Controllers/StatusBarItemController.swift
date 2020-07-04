@@ -15,6 +15,7 @@ class StatusBarItemController: NSObject {
     private let statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
 
     private let menu = NSMenu()
+    private let pasteboard = NSPasteboard.general
 
     private let statusBarItemVM = StatusItemBarViewModel()
 
@@ -59,8 +60,26 @@ extension StatusBarItemController {
         statusBarItem.menu = menu
     }
 
+    func watchPasteboard(copied: @escaping (_ copiedString: String) -> Void) {
+        var changeCount = pasteboard.changeCount
+        Timer.scheduledTimer(withTimeInterval: statusBarItemVM.watchBoardCheckTimeFrequency, repeats: true) { _ in
+            if let copiedString = self.pasteboard.string(forType: .string) {
+                if self.pasteboard.changeCount != changeCount {
+                    copied(copiedString)
+                    changeCount = self.pasteboard.changeCount
+                }
+            }
+        }
+    }
+
 
     private func setup() {
         constructMenu()
+
+        watchPasteboard { copiedContent in
+            DispatchQueue.main.async {
+                print("Copied string - \(copiedContent)")
+            }
+        }
     }
 }

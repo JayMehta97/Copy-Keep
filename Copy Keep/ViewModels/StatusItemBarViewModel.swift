@@ -22,5 +22,7 @@ class StatusItemBarViewModel {
 
     let exportMenuItemTitle = "Export"
     let exportMenuItemKey = "e"
+
+    let watchBoardCheckTimeFrequency = 1.0
 }
 
