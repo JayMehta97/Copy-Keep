@@ -197,11 +197,9 @@
 		E5C5728C24B1221600C8348F /* Auto Launcher */ = {
 			isa = PBXGroup;
 			children = (
-				E5C5728D24B1221700C8348F /* AppDelegate.swift */,
-				E5C5729124B1221900C8348F /* Assets.xcassets */,
-				E5C5729324B1221900C8348F /* Main.storyboard */,
-				E5C5729624B1221900C8348F /* Info.plist */,
-				E5C5729724B1221900C8348F /* Auto_Launcher.entitlements */,
+				E5C572A324B1295000C8348F /* Resources */,
+				E5C572A124B1293700C8348F /* View */,
+				E5C572A024B1292900C8348F /* Generated */,
 			);
 			path = "Auto Launcher";
 			sourceTree = "<group>";
@@ -212,6 +210,40 @@
 				E5C5729E24B122D300C8348F /* ServiceManagement.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E5C572A024B1292900C8348F /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				E5C5728D24B1221700C8348F /* AppDelegate.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		E5C572A124B1293700C8348F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E5C572A224B1293E00C8348F /* Stroyboards */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E5C572A224B1293E00C8348F /* Stroyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E5C5729324B1221900C8348F /* Main.storyboard */,
+			);
+			path = Stroyboards;
+			sourceTree = "<group>";
+		};
+		E5C572A324B1295000C8348F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E5C5729124B1221900C8348F /* Assets.xcassets */,
+				E5C5729624B1221900C8348F /* Info.plist */,
+				E5C5729724B1221900C8348F /* Auto_Launcher.entitlements */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -514,12 +546,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Auto Launcher/Auto_Launcher.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Auto Launcher/Resources/Auto_Launcher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = M23Q7YJYU2;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = "Auto Launcher/Info.plist";
+				INFOPLIST_FILE = "Auto Launcher/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -535,12 +567,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Auto Launcher/Auto_Launcher.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Auto Launcher/Resources/Auto_Launcher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = M23Q7YJYU2;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = "Auto Launcher/Info.plist";
+				INFOPLIST_FILE = "Auto Launcher/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
