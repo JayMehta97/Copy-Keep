@@ -18,6 +18,7 @@ class StatusBarItemController: NSObject {
     private let pasteboard = NSPasteboard.general
 
     private let statusBarItemVM = StatusItemBarViewModel()
+    private var coreDataManager: CoreDataManager?
 
     // MARK : - Initialization
 
@@ -26,7 +27,10 @@ class StatusBarItemController: NSObject {
 
         statusBarItem.button?.image = NSImage(named: NSImage.Name(statusBarItemVM.statusBarImageName))
 
-        setup()
+        // Setup Core Data Manager
+        coreDataManager = CoreDataManager(modelName: statusBarItemVM.coreDataModelName, completion: {
+            self.setup()
+        })
     }
 }
 
@@ -78,8 +82,38 @@ extension StatusBarItemController {
 
         watchPasteboard { copiedContent in
             DispatchQueue.main.async {
-                print("Copied string - \(copiedContent)")
+                if self.shouldCopyItemBeSaved(forCopiedContent: copiedContent) {
+                    self.addCopyItem(forCopiedContent: copiedContent)
+                }
             }
         }
+    }
+}
+
+extension StatusBarItemController {
+    // MARK: - Helper methods
+
+    private func shouldCopyItemBeSaved(forCopiedContent copiedContent: String) -> Bool {
+        guard let copyItems = coreDataManager?.getCopyItems() else {
+            return true
+        }
+
+        for (index, copyItem) in zip(copyItems.indices, copyItems) {
+            if index > 9 {
+                break
+            }
+
+            if copyItem.content == copiedContent {
+                return false
+            }
+        }
+        return true
+    }
+
+    private func addCopyItem(forCopiedContent copiedContent: String) {
+        let copyItem = CopyItem(entity: CopyItem.entity(), insertInto: coreDataManager?.mainManagedObjectContext)
+        copyItem.content = copiedContent
+        copyItem.createdAt = Date()
+        coreDataManager?.saveChanges()
     }
 }

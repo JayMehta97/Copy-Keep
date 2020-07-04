@@ -181,6 +181,7 @@ class CoreDataManager: NSObject {
 }
 
 extension CoreDataManager: NSFetchedResultsControllerDelegate {
+    // MARK: - NSFetchedResultsControllerDelegate Methods
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
 
@@ -189,6 +190,7 @@ extension CoreDataManager: NSFetchedResultsControllerDelegate {
             return
         }
         print(cellIndex)
+
         switch type {
         case .insert:
             print("insert")
@@ -199,8 +201,5 @@ extension CoreDataManager: NSFetchedResultsControllerDelegate {
         default:
             break
         }
-
     }
-
 }
-

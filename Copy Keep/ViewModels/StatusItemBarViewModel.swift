@@ -13,6 +13,7 @@ class StatusItemBarViewModel {
     // MARK: - Properties
 
     let statusBarImageName = "icon"
+    let coreDataModelName = "Model"
 
     let quitMenuItemTitle = "Quit"
     let quitMenuItemKey = "q"
