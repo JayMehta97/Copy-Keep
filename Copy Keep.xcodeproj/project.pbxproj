@@ -53,14 +53,46 @@
 		E523C16624B0DC24003417F4 /* Copy Keep */ = {
 			isa = PBXGroup;
 			children = (
+				E523C17924B0DCDE003417F4 /* View */,
+				E523C17824B0DCD3003417F4 /* Resources */,
+				E523C17724B0DCC5003417F4 /* Generated */,
+			);
+			path = "Copy Keep";
+			sourceTree = "<group>";
+		};
+		E523C17724B0DCC5003417F4 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
 				E523C16724B0DC24003417F4 /* AppDelegate.swift */,
 				E523C16924B0DC24003417F4 /* ViewController.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		E523C17824B0DCD3003417F4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				E523C16B24B0DC27003417F4 /* Assets.xcassets */,
-				E523C16D24B0DC27003417F4 /* Main.storyboard */,
 				E523C17024B0DC27003417F4 /* Info.plist */,
 				E523C17124B0DC27003417F4 /* Copy_Keep.entitlements */,
 			);
-			path = "Copy Keep";
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E523C17924B0DCDE003417F4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E523C17A24B0DCE8003417F4 /* Storyboards */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E523C17A24B0DCE8003417F4 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E523C16D24B0DC27003417F4 /* Main.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,7 +306,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = M23Q7YJYU2;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = "Copy Keep/Info.plist";
+				INFOPLIST_FILE = "Copy Keep/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -294,7 +326,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = M23Q7YJYU2;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = "Copy Keep/Info.plist";
+				INFOPLIST_FILE = "Copy Keep/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
