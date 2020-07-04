@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Copy Keep.xcodeproj">
+      location = "self:/Users/jaymehta/My Collection/My Projects/macOS/Copy Keep/Copy Keep.xcodeproj">
    </FileRef>
 </Workspace>
