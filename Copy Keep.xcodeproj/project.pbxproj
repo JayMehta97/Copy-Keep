@@ -16,6 +16,12 @@
 		E523C18724B0ED51003417F4 /* CopyItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523C18524B0ED51003417F4 /* CopyItem+CoreDataClass.swift */; };
 		E523C18824B0ED51003417F4 /* CopyItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523C18624B0ED51003417F4 /* CopyItem+CoreDataProperties.swift */; };
 		E523C18A24B0ED93003417F4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523C18924B0ED93003417F4 /* CoreDataManager.swift */; };
+		E5621EAA24B1CA8D004D0DD9 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5621EA924B1CA8D004D0DD9 /* Storyboard.swift */; };
+		E5621EAC24B1CB24004D0DD9 /* NSViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5621EAB24B1CB24004D0DD9 /* NSViewController+Extensions.swift */; };
+		E5621EAE24B1CBC1004D0DD9 /* NSWindowController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5621EAD24B1CBC1004D0DD9 /* NSWindowController+Extensions.swift */; };
+		E5621EB324B1CC53004D0DD9 /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5621EB224B1CC53004D0DD9 /* PreferencesTabViewController.swift */; };
+		E5621EB524B1CD57004D0DD9 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5621EB424B1CD57004D0DD9 /* PreferencesWindowController.swift */; };
+		E5621EB824B1F094004D0DD9 /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5621EB724B1F094004D0DD9 /* GeneralPreferencesViewController.swift */; };
 		E5C5728E24B1221700C8348F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5728D24B1221700C8348F /* AppDelegate.swift */; };
 		E5C5729224B1221900C8348F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5C5729124B1221900C8348F /* Assets.xcassets */; };
 		E5C5729524B1221900C8348F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C5729324B1221900C8348F /* Main.storyboard */; };
@@ -49,6 +55,12 @@
 		E523C18524B0ED51003417F4 /* CopyItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CopyItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E523C18624B0ED51003417F4 /* CopyItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CopyItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E523C18924B0ED93003417F4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		E5621EA924B1CA8D004D0DD9 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		E5621EAB24B1CB24004D0DD9 /* NSViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Extensions.swift"; sourceTree = "<group>"; };
+		E5621EAD24B1CBC1004D0DD9 /* NSWindowController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindowController+Extensions.swift"; sourceTree = "<group>"; };
+		E5621EB224B1CC53004D0DD9 /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
+		E5621EB424B1CD57004D0DD9 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		E5621EB724B1F094004D0DD9 /* GeneralPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewController.swift; sourceTree = "<group>"; };
 		E5C5728B24B1221600C8348F /* Auto Launcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Auto Launcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5C5728D24B1221700C8348F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5C5729124B1221900C8348F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -132,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				E523C17A24B0DCE8003417F4 /* Storyboards */,
+				E5621EA924B1CA8D004D0DD9 /* Storyboard.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -147,6 +160,9 @@
 		E523C17B24B0DE0D003417F4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E5621EB624B1F02F004D0DD9 /* ViewControllers */,
+				E5621EB124B1CC32004D0DD9 /* TabViewControllers */,
+				E5621EB024B1CC01004D0DD9 /* WindowControllers */,
 				E523C16924B0DC24003417F4 /* StatusBarItemController.swift */,
 			);
 			path = Controllers;
@@ -190,8 +206,34 @@
 			isa = PBXGroup;
 			children = (
 				E523C18924B0ED93003417F4 /* CoreDataManager.swift */,
+				E5621EAB24B1CB24004D0DD9 /* NSViewController+Extensions.swift */,
+				E5621EAD24B1CBC1004D0DD9 /* NSWindowController+Extensions.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E5621EB024B1CC01004D0DD9 /* WindowControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E5621EB424B1CD57004D0DD9 /* PreferencesWindowController.swift */,
+			);
+			path = WindowControllers;
+			sourceTree = "<group>";
+		};
+		E5621EB124B1CC32004D0DD9 /* TabViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E5621EB224B1CC53004D0DD9 /* PreferencesTabViewController.swift */,
+			);
+			path = TabViewControllers;
+			sourceTree = "<group>";
+		};
+		E5621EB624B1F02F004D0DD9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E5621EB724B1F094004D0DD9 /* GeneralPreferencesViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		E5C5728C24B1221600C8348F /* Auto Launcher */ = {
@@ -348,12 +390,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E523C16A24B0DC24003417F4 /* StatusBarItemController.swift in Sources */,
+				E5621EB324B1CC53004D0DD9 /* PreferencesTabViewController.swift in Sources */,
 				E523C18324B0E44D003417F4 /* CopyKeep.xcdatamodeld in Sources */,
 				E523C18724B0ED51003417F4 /* CopyItem+CoreDataClass.swift in Sources */,
 				E523C18824B0ED51003417F4 /* CopyItem+CoreDataProperties.swift in Sources */,
+				E5621EB824B1F094004D0DD9 /* GeneralPreferencesViewController.swift in Sources */,
 				E523C17E24B0DE9C003417F4 /* StatusItemBarViewModel.swift in Sources */,
+				E5621EB524B1CD57004D0DD9 /* PreferencesWindowController.swift in Sources */,
 				E523C18A24B0ED93003417F4 /* CoreDataManager.swift in Sources */,
+				E5621EAE24B1CBC1004D0DD9 /* NSWindowController+Extensions.swift in Sources */,
+				E5621EAA24B1CA8D004D0DD9 /* Storyboard.swift in Sources */,
 				E523C16824B0DC24003417F4 /* AppDelegate.swift in Sources */,
+				E5621EAC24B1CB24004D0DD9 /* NSViewController+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

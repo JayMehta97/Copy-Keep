@@ -19,10 +19,13 @@ class StatusItemBarViewModel {
     let quitMenuItemKey = "q"
 
     let clearMenuItemTitle = "Clear"
-    let clearMenuItemKey = "c"
+    let clearMenuItemKey = ""
 
     let exportMenuItemTitle = "Export"
     let exportMenuItemKey = "e"
+
+    let preferencesMenuItemTitle = "Preferences"
+    let preferencesMenuItemKey = ","
 
     let watchBoardCheckTimeFrequency = 1.0
 

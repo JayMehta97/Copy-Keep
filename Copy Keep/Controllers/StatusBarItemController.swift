@@ -60,6 +60,17 @@ extension StatusBarItemController {
 
         menu.addItem(NSMenuItem.separator())
 
+        let preferencesMenuItem = NSMenuItem(
+            title: statusBarItemVM.preferencesMenuItemTitle,
+            action: #selector(StatusBarItemController.openPreferences(_:)),
+            keyEquivalent: statusBarItemVM.preferencesMenuItemKey
+        )
+        preferencesMenuItem.target = self
+
+        menu.addItem(preferencesMenuItem)
+
+        menu.addItem(NSMenuItem.separator())
+
         menu.addItem(NSMenuItem(
             title: statusBarItemVM.quitMenuItemTitle,
             action: #selector(NSApplication.terminate(_:)),
@@ -203,5 +214,11 @@ extension StatusBarItemController {
 
         pasteboard.clearContents()
         pasteboard.setString(menuItem.title, forType: .string)
+    }
+
+    @objc func openPreferences(_ sender: Any?) {
+        let windowController = PreferencesWindowController.instantiate()
+        let settingsController = (windowController.window!.contentViewController as! PreferencesTabViewController)
+        windowController.showWindow(self)
     }
 }

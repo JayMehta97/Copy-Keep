@@ -40,7 +40,7 @@ class CoreDataManager: NSObject {
         return managedObjectContext
     }()
 
-    public private(set) lazy var mainManagedObjectContext: NSManagedObjectContext = {
+    public lazy var mainManagedObjectContext: NSManagedObjectContext = {
         // Initialize Managed Object Context
         let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
 
@@ -67,6 +67,8 @@ class CoreDataManager: NSObject {
     private lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         return NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
     }()
+
+    static let sharedInstance = CoreDataManager(modelName: "", completion: {})
 
     // MARK: - Initialization
 
@@ -213,7 +215,6 @@ extension CoreDataManager: NSFetchedResultsControllerDelegate {
 
         switch type {
         case .insert:
-
             delegate?.newItemInserted(atIndex: cellIndex)
         case .delete:
             delegate?.itemDeleted(atIndex: cellIndex)
