@@ -31,11 +31,7 @@ class StatusItemBarViewModel {
     private let thresholdToForDuplicateCopy = 10
     let maximumMenuItemsWithKeys = 10
 
-    // MARK: - Core data methods
-
-    func getCopyItems() -> [CopyItem]? {
-        return CoreDataManager.shared.getCopyItems()
-    }
+    // MARK: - Helper methods
 
     private func shouldCopyItemBeSaved(forCopiedContent copiedContent: String) -> Bool {
         guard let copyItems = CoreDataManager.shared.getCopyItems() else {
@@ -53,6 +49,18 @@ class StatusItemBarViewModel {
         }
         return true
     }
+}
+
+// MARK: - CoreData Operations
+extension StatusItemBarViewModel {
+
+    // MARK: - Get data methods
+
+    func getCopyItems() -> [CopyItem]? {
+        return CoreDataManager.shared.getCopyItems()
+    }
+
+    // MARK: - Insert data methods
 
     func addCopyItem(forCopiedContent copiedContent: String) {
         guard shouldCopyItemBeSaved(forCopiedContent: copiedContent) else {
@@ -63,6 +71,8 @@ class StatusItemBarViewModel {
         copyItem.createdAt = Date()
         CoreDataManager.shared.saveChanges()
     }
+
+    // MARK: - Remove data methods
 
     func clearAllCopyItems() {
         guard let copyItems = CoreDataManager.shared.getCopyItems() else {

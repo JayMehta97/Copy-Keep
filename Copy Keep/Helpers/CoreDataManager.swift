@@ -27,7 +27,7 @@ class CoreDataManager: NSObject {
     private let modelName: String
     private var fetchedRC: NSFetchedResultsController<CopyItem>?
 
-    var delegate: CoreDataManagerDelegate?
+    private(set) var delegates = [CoreDataManagerDelegate]()
 
     // MARK: - Core Data Stack
 
@@ -185,6 +185,10 @@ extension CoreDataManager {
         }
     }
 
+    func addDelegate(coreDataManagerDelegate: CoreDataManagerDelegate) {
+        delegates.append(coreDataManagerDelegate)
+    }
+
     func deleteItem(atIndex index: IndexPath) {
         guard let item = fetchedRC?.object(at: index) else {
             return
@@ -208,9 +212,13 @@ extension CoreDataManager: NSFetchedResultsControllerDelegate {
 
         switch type {
         case .insert:
-            delegate?.newItemInserted(atIndex: cellIndex)
+            delegates.forEach({ (delegate) in
+                delegate.newItemInserted(atIndex: cellIndex)
+            })
         case .delete:
-            delegate?.itemDeleted(atIndex: cellIndex)
+            delegates.forEach({ (delegate) in
+                delegate.itemDeleted(atIndex: cellIndex)
+            })
         case.update:
             print("update")
         default:

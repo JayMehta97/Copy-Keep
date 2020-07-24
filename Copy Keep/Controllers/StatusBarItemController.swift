@@ -94,7 +94,8 @@ extension StatusBarItemController {
     private func setup() {
         constructMenu()
 
-        CoreDataManager.shared.delegate = self
+        // Add StatusBarController to CoreDataManager's delegate list to receive database changes events
+        CoreDataManager.shared.addDelegate(coreDataManagerDelegate: self)
 
         watchPasteboard { copiedContent in
             DispatchQueue.main.async {
