@@ -10,7 +10,7 @@ import Cocoa
 import ServiceManagement
 
 extension Notification.Name {
-    static let killLauncher = Notification.Name("killLauncher")
+    static let killLauncher = Notification.Name(Constants.killLauncherNotificationName)
 }
 
 @NSApplicationMain
@@ -36,7 +36,7 @@ extension AppDelegate {
     // MARK: - Launcher related methods
 
     private func killLauncherApplication() {
-        let launcherAppId = "com.jaymehta.apps.Auto-Launcher"
+        let launcherAppId = Constants.launcherAppId
         let runningApps = NSWorkspace.shared.runningApplications
         let isRunning = !runningApps.filter { $0.bundleIdentifier == launcherAppId }.isEmpty
 

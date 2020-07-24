@@ -22,8 +22,9 @@ class CoreDataManager: NSObject {
 
     // MARK: - Properties
 
+    static let shared = CoreDataManager(modelName: Constants.coreDataModelName)
+
     private let modelName: String
-    private let completion: CoreDataManagerCompletion
     private var fetchedRC: NSFetchedResultsController<CopyItem>?
 
     var delegate: CoreDataManagerDelegate?
@@ -68,15 +69,12 @@ class CoreDataManager: NSObject {
         return NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
     }()
 
-    static let sharedInstance = CoreDataManager(modelName: "", completion: {})
-
     // MARK: - Initialization
 
-    public init(modelName: String, completion: @escaping CoreDataManagerCompletion) {
+    public init(modelName: String) {
 
         // Set Properties
         self.modelName = modelName
-        self.completion = completion
 
         super.init()
 
@@ -136,16 +134,11 @@ extension CoreDataManager {
             fatalError("Unable to Set Up Core Data Stack")
         }
 
-        DispatchQueue.global().async {
-            // Add Persistent Store
-            self.addPersistentStore(to: persistentStoreCoordinator)
+        // Add Persistent Store
+        self.addPersistentStore(to: persistentStoreCoordinator)
 
-            // Setup Fetch Result Controller
-            self.setupFetchResultController()
-
-            // Invoke Completion On Main Queue
-            DispatchQueue.main.async { self.completion() }
-        }
+        // Setup Fetch Result Controller
+        self.setupFetchResultController()
     }
 
     private func addPersistentStore(to persistentStoreCoordinator: NSPersistentStoreCoordinator) {
