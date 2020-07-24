@@ -34,6 +34,8 @@ class GeneralPreferencesViewController: NSViewController {
     // MARK: - User Interactions Methods
 
     @IBAction private func deleteItemsButtonPressed(_ sender: NSButton) {
+        generalPreferencesVM.deleteItems(forIndexes: copiedItemsTableView.selectedRowIndexes)
+        setupDeleteItemsButton(forSelectedItems: 0)
     }
 
 }
@@ -53,9 +55,11 @@ extension GeneralPreferencesViewController {
     }
 
     private func setup() {
-        copyItems = CoreDataManager.shared.getCopyItems() ?? []
+        copyItems = generalPreferencesVM.getCopyItems() ?? []
         setupCopiedTableView()
         setupDeleteItemsButton(forSelectedItems: 0)
+
+        CoreDataManager.shared.addDelegate(coreDataManagerDelegate: self)
     }
 }
 
@@ -85,5 +89,19 @@ extension GeneralPreferencesViewController {
 
     @objc func copiedItemsTableViewRowClicked() {
         setupDeleteItemsButton(forSelectedItems: copiedItemsTableView.selectedRowIndexes.count)
+    }
+}
+
+extension GeneralPreferencesViewController: CoreDataManagerDelegate {
+    // MARK: - CoreDataManagerDelegate Methods
+
+    func newItemInserted(atIndex indexPath: IndexPath) {
+        copyItems = generalPreferencesVM.getCopyItems() ?? []
+        copiedItemsTableView.insertRows(at: IndexSet(integer: 0), withAnimation: .slideDown)
+    }
+
+    func itemDeleted(atIndex index: IndexPath) {
+        copyItems = generalPreferencesVM.getCopyItems() ?? []
+        copiedItemsTableView.removeRows(at: IndexSet(integer: index.item), withAnimation: .slideUp)
     }
 }
