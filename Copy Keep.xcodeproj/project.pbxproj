@@ -22,6 +22,8 @@
 		E5621EB324B1CC53004D0DD9 /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5621EB224B1CC53004D0DD9 /* PreferencesTabViewController.swift */; };
 		E5621EB524B1CD57004D0DD9 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5621EB424B1CD57004D0DD9 /* PreferencesWindowController.swift */; };
 		E5621EB824B1F094004D0DD9 /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5621EB724B1F094004D0DD9 /* GeneralPreferencesViewController.swift */; };
+		E5621EBA24B25CEB004D0DD9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5621EB924B25CEB004D0DD9 /* Constants.swift */; };
+		E5B6D2A624CB20BB002D2521 /* GeneralPreferencesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B6D2A524CB20BB002D2521 /* GeneralPreferencesViewModel.swift */; };
 		E5C5728E24B1221700C8348F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C5728D24B1221700C8348F /* AppDelegate.swift */; };
 		E5C5729224B1221900C8348F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5C5729124B1221900C8348F /* Assets.xcassets */; };
 		E5C5729524B1221900C8348F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C5729324B1221900C8348F /* Main.storyboard */; };
@@ -61,6 +63,8 @@
 		E5621EB224B1CC53004D0DD9 /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
 		E5621EB424B1CD57004D0DD9 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		E5621EB724B1F094004D0DD9 /* GeneralPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewController.swift; sourceTree = "<group>"; };
+		E5621EB924B25CEB004D0DD9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E5B6D2A524CB20BB002D2521 /* GeneralPreferencesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewModel.swift; sourceTree = "<group>"; };
 		E5C5728B24B1221600C8348F /* Auto Launcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Auto Launcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5C5728D24B1221700C8348F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5C5729124B1221900C8348F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 		E523C17C24B0DE87003417F4 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				E5B6D2A524CB20BB002D2521 /* GeneralPreferencesViewModel.swift */,
 				E523C17D24B0DE9C003417F4 /* StatusItemBarViewModel.swift */,
 			);
 			path = ViewModels;
@@ -208,6 +213,7 @@
 				E523C18924B0ED93003417F4 /* CoreDataManager.swift */,
 				E5621EAB24B1CB24004D0DD9 /* NSViewController+Extensions.swift */,
 				E5621EAD24B1CBC1004D0DD9 /* NSWindowController+Extensions.swift */,
+				E5621EB924B25CEB004D0DD9 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -395,11 +401,13 @@
 				E523C18724B0ED51003417F4 /* CopyItem+CoreDataClass.swift in Sources */,
 				E523C18824B0ED51003417F4 /* CopyItem+CoreDataProperties.swift in Sources */,
 				E5621EB824B1F094004D0DD9 /* GeneralPreferencesViewController.swift in Sources */,
+				E5B6D2A624CB20BB002D2521 /* GeneralPreferencesViewModel.swift in Sources */,
 				E523C17E24B0DE9C003417F4 /* StatusItemBarViewModel.swift in Sources */,
 				E5621EB524B1CD57004D0DD9 /* PreferencesWindowController.swift in Sources */,
 				E523C18A24B0ED93003417F4 /* CoreDataManager.swift in Sources */,
 				E5621EAE24B1CBC1004D0DD9 /* NSWindowController+Extensions.swift in Sources */,
 				E5621EAA24B1CA8D004D0DD9 /* Storyboard.swift in Sources */,
+				E5621EBA24B25CEB004D0DD9 /* Constants.swift in Sources */,
 				E523C16824B0DC24003417F4 /* AppDelegate.swift in Sources */,
 				E5621EAC24B1CB24004D0DD9 /* NSViewController+Extensions.swift in Sources */,
 			);

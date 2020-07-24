@@ -18,7 +18,6 @@ class StatusBarItemController: NSObject {
     private let pasteboard = NSPasteboard.general
 
     private let statusBarItemVM = StatusItemBarViewModel()
-    private var coreDataManager: CoreDataManager?
 
     // MARK : - Initialization
 
@@ -27,10 +26,8 @@ class StatusBarItemController: NSObject {
 
         statusBarItem.button?.image = NSImage(named: NSImage.Name(statusBarItemVM.statusBarImageName))
 
-        // Setup Core Data Manager
-        coreDataManager = CoreDataManager(modelName: statusBarItemVM.coreDataModelName, completion: {
-            self.setup()
-        })
+        // Setup
+        self.setup()
     }
 }
 
@@ -45,7 +42,7 @@ extension StatusBarItemController {
 
         let clearMenuItem = NSMenuItem(
             title: statusBarItemVM.clearMenuItemTitle,
-            action: #selector(StatusBarItemController.clearAllCopyItems(_:)),
+            action: #selector(StatusBarItemController.clearAllCopyItemsClicked),
             keyEquivalent: statusBarItemVM.clearMenuItemKey
         )
         clearMenuItem.target = self
@@ -97,43 +94,13 @@ extension StatusBarItemController {
     private func setup() {
         constructMenu()
 
-        coreDataManager?.delegate = self
+        CoreDataManager.shared.delegate = self
 
         watchPasteboard { copiedContent in
             DispatchQueue.main.async {
-                if self.shouldCopyItemBeSaved(forCopiedContent: copiedContent) {
-                    self.addCopyItem(forCopiedContent: copiedContent)
-                }
+                self.statusBarItemVM.addCopyItem(forCopiedContent: copiedContent)
             }
         }
-    }
-}
-
-extension StatusBarItemController {
-    // MARK: - Helper methods
-
-    private func shouldCopyItemBeSaved(forCopiedContent copiedContent: String) -> Bool {
-        guard let copyItems = coreDataManager?.getCopyItems() else {
-            return true
-        }
-
-        for (index, copyItem) in zip(copyItems.indices, copyItems) {
-            if index >= statusBarItemVM.thresholdToForDuplicateCopy {
-                break
-            }
-
-            if copyItem.content == copiedContent {
-                return false
-            }
-        }
-        return true
-    }
-
-    private func addCopyItem(forCopiedContent copiedContent: String) {
-        let copyItem = CopyItem(entity: CopyItem.entity(), insertInto: coreDataManager?.mainManagedObjectContext)
-        copyItem.content = copiedContent
-        copyItem.createdAt = Date()
-        coreDataManager?.saveChanges()
     }
 }
 
@@ -141,7 +108,7 @@ extension StatusBarItemController: CoreDataManagerDelegate {
     // MARK: - CoreDataManagerDelegate Methods
 
     func newItemInserted(atIndex indexPath: IndexPath) {
-        guard let copyItem = coreDataManager?.getCopyItems()?.first else {
+        guard let copyItem = statusBarItemVM.getCopyItems()?.first else {
             return
         }
 
@@ -171,7 +138,8 @@ extension StatusBarItemController {
     }
 
     private func addSavedCopyItemsToMenu() {
-        guard let copyItems = coreDataManager?.getCopyItems() else {
+        // Copy Items from coreDataManager are already correctly sorted in descending order but we reverse them so that we can add all elements at zero position in NSMenu.
+        guard let copyItems = statusBarItemVM.getCopyItems()?.reversed() else {
             return
         }
 
@@ -197,14 +165,8 @@ extension StatusBarItemController {
 extension StatusBarItemController {
     // MARK: - User Interactions methods
 
-    @objc func clearAllCopyItems(_ sender: Any?) {
-        guard let copyItems = coreDataManager?.getCopyItems() else {
-            return
-        }
-
-        for _ in 0..<copyItems.count {
-            coreDataManager?.deleteItem(atIndex: IndexPath(item: 0, section: 0))
-        }
+    @objc func clearAllCopyItemsClicked() {
+        statusBarItemVM.clearAllCopyItems()
     }
 
     @objc func copyMenuItemTitleToPasteBoard(_ sender: Any?) {
@@ -218,7 +180,6 @@ extension StatusBarItemController {
 
     @objc func openPreferences(_ sender: Any?) {
         let windowController = PreferencesWindowController.instantiate()
-        let settingsController = (windowController.window!.contentViewController as! PreferencesTabViewController)
         windowController.showWindow(self)
     }
 }
