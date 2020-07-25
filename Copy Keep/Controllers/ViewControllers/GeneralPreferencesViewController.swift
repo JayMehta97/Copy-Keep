@@ -45,7 +45,6 @@ extension GeneralPreferencesViewController {
     private func setupCopiedTableView() {
         self.copiedItemsTableView.dataSource = self
         self.copiedItemsTableView.delegate = self
-        self.copiedItemsTableView.action = #selector(copiedItemsTableViewRowClicked)
     }
 
     private func setupDeleteItemsButton(forSelectedItems selectedItems: Int) {
@@ -86,13 +85,12 @@ extension GeneralPreferencesViewController: NSTableViewDelegate {
         cell.toolTip = generalPreferencesVM.copyItems[row].content ?? ""
         return cell
     }
-}
 
-extension GeneralPreferencesViewController {
-    // MARK: - TableView interaction methods
-
-    @objc func copiedItemsTableViewRowClicked() {
-        setupDeleteItemsButton(forSelectedItems: copiedItemsTableView.selectedRowIndexes.count)
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        guard let tableView = notification.object as? NSTableView else {
+            return
+        }
+        setupDeleteItemsButton(forSelectedItems: tableView.selectedRowIndexes.count)
     }
 }
 
