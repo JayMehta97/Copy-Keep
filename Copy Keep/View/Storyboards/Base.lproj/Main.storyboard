@@ -763,13 +763,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3G-Nl-zga">
-                                <rect key="frame" x="0.0" y="35" width="450" height="313"/>
+                                <rect key="frame" x="0.0" y="35" width="450" height="318"/>
                                 <clipView key="contentView" id="L8F-lv-DmA">
-                                    <rect key="frame" x="1" y="0.0" width="448" height="312"/>
+                                    <rect key="frame" x="1" y="0.0" width="448" height="317"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowSizeStyle="automatic" headerView="oRp-R6-FB4" viewBased="YES" id="oue-bF-AKz">
-                                            <rect key="frame" x="0.0" y="0.0" width="448" height="287"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="292"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -842,7 +842,7 @@
                                     <constraint firstAttribute="height" constant="21" id="G5H-dI-aEc"/>
                                     <constraint firstAttribute="width" constant="65" id="ggP-TB-jCh"/>
                                 </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="20" drawsBackground="YES" id="LqI-dK-fbu">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="20" drawsBackground="YES" id="LqI-dK-fbu">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="3Fh-rT-uVz"/>
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -855,8 +855,8 @@
                                     <constraint firstAttribute="height" constant="16" id="jqS-Bf-xwI"/>
                                 </constraints>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Select items to delete:" id="A8U-aQ-lbl">
-                                    <font key="font" metaFont="menu" size="14"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <font key="font" size="13" name="HelveticaNeue"/>
+                                    <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -881,7 +881,7 @@
                             <constraint firstItem="caf-Lt-CM1" firstAttribute="top" secondItem="H15-RC-ceP" secondAttribute="bottom" constant="20" id="D3b-lL-3Na"/>
                             <constraint firstAttribute="bottom" secondItem="T3G-Nl-zga" secondAttribute="bottom" constant="35" id="LV5-MW-qef"/>
                             <constraint firstAttribute="trailing" secondItem="caf-Lt-CM1" secondAttribute="trailing" id="MOa-z2-qVY"/>
-                            <constraint firstItem="T3G-Nl-zga" firstAttribute="top" secondItem="caf-Lt-CM1" secondAttribute="bottom" constant="8" id="U2Y-K3-H6D"/>
+                            <constraint firstItem="T3G-Nl-zga" firstAttribute="top" secondItem="caf-Lt-CM1" secondAttribute="bottom" constant="3" id="U2Y-K3-H6D"/>
                             <constraint firstItem="nNd-to-eOp" firstAttribute="leading" secondItem="vjx-77-jJc" secondAttribute="leading" id="YaT-th-Z57"/>
                             <constraint firstItem="caf-Lt-CM1" firstAttribute="leading" secondItem="vjx-77-jJc" secondAttribute="leading" id="ciH-yw-sMc"/>
                             <constraint firstItem="T3G-Nl-zga" firstAttribute="leading" secondItem="vjx-77-jJc" secondAttribute="leading" id="p9a-Q1-B9L"/>

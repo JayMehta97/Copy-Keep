@@ -14,11 +14,6 @@ protocol CoreDataManagerDelegate {
     func itemDeleted(atIndex index: IndexPath)
 }
 
-struct CoreDataEntityDelegate {
-    let coreDataManagerDelegate: CoreDataManagerDelegate
-    let entity: Entity
-}
-
 enum Entity {
     case copyItem
 }
