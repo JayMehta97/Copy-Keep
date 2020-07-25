@@ -51,11 +51,15 @@ extension StatusBarItemController {
 
         menu.addItem(clearMenuItem)
 
-        menu.addItem(NSMenuItem(
+        let exportMenuItem = NSMenuItem(
             title: statusBarItemVM.exportMenuItemTitle,
-            action: #selector(NSApplication.terminate(_:)),
+            action: #selector(StatusBarItemController.exportMenuItemClicked),
             keyEquivalent: statusBarItemVM.exportMenuItemKey
-        ))
+        )
+
+        exportMenuItem.target = self
+
+        menu.addItem(exportMenuItem)
 
         menu.addItem(NSMenuItem.separator())
 
@@ -189,5 +193,15 @@ extension StatusBarItemController {
         }
         preferencesWindowController?.showWindow(self)
         NSApp.activate(ignoringOtherApps: true)
+    }
+
+    @objc func exportMenuItemClicked() {
+        let savePanel = NSSavePanel()
+        savePanel.nameFieldStringValue = "CopyKeep Items.json"
+        savePanel.begin { (result) in
+            if let url = savePanel.url, result == .OK {
+                self.statusBarItemVM.exportCopyItems(toFileUrl: url)
+            }
+        }
     }
 }

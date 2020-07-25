@@ -61,6 +61,31 @@ class StatusItemBarViewModel {
             }
         }
     }
+
+    func exportCopyItems(toFileUrl fileUrl: URL) {
+        // Transform array into data and save it into file
+        let encoder = JSONEncoder()
+        do {
+            let data = try encoder.encode(getCopyKeepExportData().self)
+            try data.write(to: fileUrl, options: .atomicWrite)
+        } catch {
+            print(error)
+        }
+    }
+
+    private func getCopyKeepExportData() -> [CopyKeepExportItem] {
+        guard let copyItems = CoreDataManager.shared.getCopyItems() else {
+            return []
+        }
+
+        var copyKeepExportItems = [CopyKeepExportItem]()
+        for copyItem in copyItems {
+            if let content = copyItem.content, let createdAt = copyItem.createdAt {
+                copyKeepExportItems.append(CopyKeepExportItem(content: content, createdAt: createdAt.description))
+            }
+        }
+        return copyKeepExportItems
+    }
 }
 
 // MARK: - CoreData Operations
