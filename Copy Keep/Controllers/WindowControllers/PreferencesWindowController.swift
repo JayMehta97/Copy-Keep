@@ -28,6 +28,7 @@ class PreferencesWindowController: NSWindowController {
         self.window?.titleVisibility = .hidden
         self.window?.titlebarAppearsTransparent = true
         self.window?.styleMask.insert(.fullSizeContentView)
+        self.window?.title = Constants.appName
     }
 
 }

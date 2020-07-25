@@ -14,6 +14,15 @@ protocol CoreDataManagerDelegate {
     func itemDeleted(atIndex index: IndexPath)
 }
 
+struct CoreDataEntityDelegate {
+    let coreDataManagerDelegate: CoreDataManagerDelegate
+    let entity: Entity
+}
+
+enum Entity {
+    case copyItem
+}
+
 class CoreDataManager: NSObject {
 
     // MARK: - Type Aliases
@@ -25,9 +34,9 @@ class CoreDataManager: NSObject {
     static let shared = CoreDataManager(modelName: Constants.coreDataModelName)
 
     private let modelName: String
-    private var fetchedRC: NSFetchedResultsController<CopyItem>?
+    private var fetchedCopyItemRC: NSFetchedResultsController<CopyItem>?
 
-    private(set) var delegates = [CoreDataManagerDelegate]()
+    private(set) var delegates = [CoreDataEntityDelegate]()
 
     // MARK: - Core Data Stack
 
@@ -121,7 +130,7 @@ extension CoreDataManager {
     }
 
     public func getCopyItems() -> [CopyItem]? {
-        return fetchedRC?.fetchedObjects ?? nil
+        return fetchedCopyItemRC?.fetchedObjects ?? nil
     }
 }
 
@@ -175,22 +184,22 @@ extension CoreDataManager {
             let sort = NSSortDescriptor(key: #keyPath(CopyItem.createdAt), ascending: false)
             request.sortDescriptors = [sort]
 
-            fetchedRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: privateManagedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+            fetchedCopyItemRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: privateManagedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
 
-            fetchedRC?.delegate = self
+            fetchedCopyItemRC?.delegate = self
 
-            try fetchedRC?.performFetch()
+            try fetchedCopyItemRC?.performFetch()
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
 
-    func addDelegate(coreDataManagerDelegate: CoreDataManagerDelegate) {
-        delegates.append(coreDataManagerDelegate)
+    func addDelegate(coreDataManagerDelegate: CoreDataManagerDelegate, forEntity entity: Entity) {
+        delegates.append(CoreDataEntityDelegate(coreDataManagerDelegate: coreDataManagerDelegate, entity: entity))
     }
 
     func deleteItem(atIndex index: IndexPath) {
-        guard let item = fetchedRC?.object(at: index) else {
+        guard let item = fetchedCopyItemRC?.object(at: index) else {
             return
         }
 
@@ -213,11 +222,15 @@ extension CoreDataManager: NSFetchedResultsControllerDelegate {
         switch type {
         case .insert:
             delegates.forEach({ (delegate) in
-                delegate.newItemInserted(atIndex: cellIndex)
+                if controller == fetchedCopyItemRC && delegate.entity == .copyItem {
+                    delegate.coreDataManagerDelegate.newItemInserted(atIndex: cellIndex)
+                }
             })
         case .delete:
             delegates.forEach({ (delegate) in
-                delegate.itemDeleted(atIndex: cellIndex)
+                if controller == fetchedCopyItemRC && delegate.entity == .copyItem {
+                    delegate.coreDataManagerDelegate.itemDeleted(atIndex: cellIndex)
+                }
             })
         case.update:
             print("update")

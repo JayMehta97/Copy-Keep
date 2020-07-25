@@ -95,7 +95,7 @@ extension StatusBarItemController {
         constructMenu()
 
         // Add StatusBarController to CoreDataManager's delegate list to receive database changes events
-        CoreDataManager.shared.addDelegate(coreDataManagerDelegate: self)
+        CoreDataManager.shared.addDelegate(coreDataManagerDelegate: self, forEntity: .copyItem)
 
         watchPasteboard { copiedContent in
             DispatchQueue.main.async {
@@ -130,7 +130,7 @@ extension StatusBarItemController {
     private func addCopyItemToMenu(copyItem: CopyItem) {
         let menuItem = NSMenuItem(
             title: copyItem.title,
-            action: #selector(StatusBarItemController.copyMenuItemTitleToPasteBoard(_:)),
+            action: #selector(StatusBarItemController.copyMenuItemContentToPasteBoard(_:)),
             keyEquivalent: ""
         )
         menuItem.target = self
@@ -170,13 +170,15 @@ extension StatusBarItemController {
         statusBarItemVM.clearAllCopyItems()
     }
 
-    @objc func copyMenuItemTitleToPasteBoard(_ sender: Any?) {
+    @objc func copyMenuItemContentToPasteBoard(_ sender: Any?) {
         guard let menuItem = sender as? NSMenuItem else {
             return
         }
 
         pasteboard.clearContents()
-        pasteboard.setString(menuItem.title, forType: .string)
+
+        // We copy content of tooltip to clipboard as it has the full content of that CopyItem.
+        pasteboard.setString(menuItem.toolTip ?? "", forType: .string)
     }
 
     @objc func openPreferences(_ sender: Any?) {

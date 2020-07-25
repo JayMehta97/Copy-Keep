@@ -23,6 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         killLauncherApplication()
+        setUserDefaults()
         statusBarItemController = StatusBarItemController()
     }
 
@@ -44,6 +45,17 @@ extension AppDelegate {
 
         if isRunning {
             DistributedNotificationCenter.default().post(name: .killLauncher, object: Bundle.main.bundleIdentifier!)
+        }
+    }
+}
+
+extension AppDelegate {
+    // MARK: - Setup methods
+
+    private func setUserDefaults() {
+        let defaults = UserDefaults.standard
+        if defaults.object(forKey: UserDefaultKeys.storeItems) != nil {
+            Constants.storeItems = defaults.integer(forKey: UserDefaultKeys.storeItems)
         }
     }
 }
