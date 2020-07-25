@@ -49,18 +49,6 @@ class StatusItemBarViewModel {
         }
         return true
     }
-
-    private func checkIfCopyItemsHavedReachedLimit() {
-        guard let copyItems = CoreDataManager.shared.getCopyItems() else {
-            return
-        }
-
-        if copyItems.count > Constants.storeItems {
-            for index in IndexSet(integersIn: Constants.storeItems..<copyItems.count).reversed() {
-                CoreDataManager.shared.deleteItem(atIndex: IndexPath(item: index, section: 0))
-            }
-        }
-    }
 }
 
 // MARK: - CoreData Operations
@@ -82,9 +70,6 @@ extension StatusItemBarViewModel {
         copyItem.content = copiedContent
         copyItem.createdAt = Date()
         CoreDataManager.shared.saveChanges()
-
-        // If copy items exceed store items then delete older copy items.
-        checkIfCopyItemsHavedReachedLimit()
     }
 
     // MARK: - Remove data methods

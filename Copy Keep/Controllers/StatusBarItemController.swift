@@ -18,7 +18,6 @@ class StatusBarItemController: NSObject {
     private let pasteboard = NSPasteboard.general
 
     private let statusBarItemVM = StatusItemBarViewModel()
-    private var preferencesWindowController: PreferencesWindowController?
 
     // MARK : - Initialization
 
@@ -183,10 +182,7 @@ extension StatusBarItemController {
     }
 
     @objc func openPreferences(_ sender: Any?) {
-        if preferencesWindowController == nil {
-            preferencesWindowController = PreferencesWindowController.instantiate()
-        }
-        preferencesWindowController?.showWindow(self)
-        NSApp.activate(ignoringOtherApps: true)
+        let windowController = PreferencesWindowController.instantiate()
+        windowController.showWindow(self)
     }
 }
