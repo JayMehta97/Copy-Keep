@@ -30,6 +30,12 @@ struct Constants {
         static let coreDataModelName = "CopyKeep"
     }
 
+    struct File {
+        // MARK: - Properties
+
+        static let copyKeepItemsJson = "CopyKeep Items.json"
+    }
+
     struct Notification {
         // MARK: - Properties
 

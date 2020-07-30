@@ -37,49 +37,8 @@ extension StatusBarItemController {
     // MARK: - Setup methods
 
     private func constructMenu() {
-
         addSavedCopyItemsToMenu()
-
-        menu.addItem(NSMenuItem.separator())
-
-        let clearMenuItem = NSMenuItem(
-            title: statusBarItemVM.clearMenuItemTitle,
-            action: #selector(StatusBarItemController.clearAllCopyItemsClicked),
-            keyEquivalent: statusBarItemVM.clearMenuItemKey
-        )
-        clearMenuItem.target = self
-
-        menu.addItem(clearMenuItem)
-
-        let exportMenuItem = NSMenuItem(
-            title: statusBarItemVM.exportMenuItemTitle,
-            action: #selector(StatusBarItemController.exportMenuItemClicked),
-            keyEquivalent: statusBarItemVM.exportMenuItemKey
-        )
-
-        exportMenuItem.target = self
-
-        menu.addItem(exportMenuItem)
-
-        menu.addItem(NSMenuItem.separator())
-
-        let preferencesMenuItem = NSMenuItem(
-            title: statusBarItemVM.preferencesMenuItemTitle,
-            action: #selector(StatusBarItemController.openPreferences(_:)),
-            keyEquivalent: statusBarItemVM.preferencesMenuItemKey
-        )
-        preferencesMenuItem.target = self
-
-        menu.addItem(preferencesMenuItem)
-
-        menu.addItem(NSMenuItem.separator())
-
-        menu.addItem(NSMenuItem(
-            title: statusBarItemVM.quitMenuItemTitle,
-            action: #selector(NSApplication.terminate(_:)),
-            keyEquivalent: statusBarItemVM.quitMenuItemKey
-        ))
-
+        addOptionItemsToMenu()
 
         statusBarItem.menu = menu
     }
@@ -108,6 +67,53 @@ extension StatusBarItemController {
                 self.statusBarItemVM.addCopyItem(forCopiedContent: copiedContent)
             }
         }
+    }
+}
+
+extension StatusBarItemController {
+    // MARK: - Static menu items
+
+    func createClearMenuItem() -> NSMenuItem {
+        let clearMenuItem = NSMenuItem(
+            title: statusBarItemVM.clearMenuItemTitle,
+            action: #selector(StatusBarItemController.clearAllCopyItemsClicked),
+            keyEquivalent: statusBarItemVM.clearMenuItemKey
+        )
+
+        clearMenuItem.target = self
+        return clearMenuItem
+    }
+
+    func createExportMenuItem() -> NSMenuItem {
+        let exportMenuItem = NSMenuItem(
+            title: statusBarItemVM.exportMenuItemTitle,
+            action: #selector(StatusBarItemController.exportMenuItemClicked),
+            keyEquivalent: statusBarItemVM.exportMenuItemKey
+        )
+
+        exportMenuItem.target = self
+        return exportMenuItem
+    }
+
+    func createPreferencesMenuItem() -> NSMenuItem {
+        let preferencesMenuItem = NSMenuItem(
+            title: statusBarItemVM.preferencesMenuItemTitle,
+            action: #selector(StatusBarItemController.openPreferences(_:)),
+            keyEquivalent: statusBarItemVM.preferencesMenuItemKey
+        )
+
+        preferencesMenuItem.target = self
+        return preferencesMenuItem
+    }
+
+    func createQuitMenuItem() -> NSMenuItem {
+        let quitMenuItem = NSMenuItem(
+            title: statusBarItemVM.quitMenuItemTitle,
+            action: #selector(NSApplication.terminate(_:)),
+            keyEquivalent: statusBarItemVM.quitMenuItemKey
+        )
+
+        return quitMenuItem
     }
 }
 
@@ -157,6 +163,18 @@ extension StatusBarItemController {
         changeShortcutKeysForMenuItems()
     }
 
+    private func addOptionItemsToMenu() {
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(createClearMenuItem())
+        menu.addItem(createExportMenuItem())
+
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(createPreferencesMenuItem())
+
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(createQuitMenuItem())
+    }
+
     private func changeShortcutKeysForMenuItems() {
         for (counter, menuItem) in menu.items.enumerated() {
             if counter == statusBarItemVM.maximumMenuItemsWithKeys || menuItem.isSeparatorItem {
@@ -197,7 +215,7 @@ extension StatusBarItemController {
 
     @objc func exportMenuItemClicked() {
         let savePanel = NSSavePanel()
-        savePanel.nameFieldStringValue = "CopyKeep Items.json"
+        savePanel.nameFieldStringValue = Constants.File.copyKeepItemsJson
         savePanel.begin { (result) in
             if let url = savePanel.url, result == .OK {
                 self.statusBarItemVM.exportCopyItems(toFileUrl: url)
