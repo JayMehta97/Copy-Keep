@@ -15,6 +15,7 @@ class GeneralPreferencesViewController: NSViewController {
     @IBOutlet private weak var numberOfItemToStoreTextField: NSTextField!
     @IBOutlet private weak var copiedItemsTableView: NSTableView!
     @IBOutlet private weak var deleteItemsButton: NSButton!
+    @IBOutlet private weak var topSepratorView: NSView!
 
     // MARK: - Properties
 
@@ -53,12 +54,15 @@ extension GeneralPreferencesViewController {
     }
 
     private func setup() {
+        topSepratorView.wantsLayer = true
+        topSepratorView.layer?.backgroundColor = NSColor.gray.cgColor
+
         generalPreferencesVM.fetchCopyItems()
 
         setupCopiedTableView()
         setupDeleteItemsButton(forSelectedItems: 0)
 
-        numberOfItemToStoreTextField.stringValue = Constants.storeItems.description
+        numberOfItemToStoreTextField.stringValue = Constants.Common.storeItems.description
         numberOfItemToStoreTextField.delegate = self
 
         // Add GeneralPreferencesVC to CoreDataManager's delegate list to receive database changes events
@@ -113,7 +117,7 @@ extension GeneralPreferencesViewController: NSTextFieldDelegate {
 
     func controlTextDidEndEditing(_ obj: Notification) {
         guard let storeItemsString = (obj.userInfo?["NSFieldEditor"] as? NSTextView)?.string, let storeItems = Int(storeItemsString), storeItems >= 0 else {
-            numberOfItemToStoreTextField.stringValue = Constants.storeItems.description
+            numberOfItemToStoreTextField.stringValue = Constants.Common.storeItems.description
             return
         }
 
@@ -123,7 +127,7 @@ extension GeneralPreferencesViewController: NSTextFieldDelegate {
                     self.generalPreferencesVM.deleteAllItems(fromIndex: storeItems)
                     self.saveStoreItems(storeItems: storeItems)
                 } else {
-                    self.numberOfItemToStoreTextField.stringValue = Constants.storeItems.description
+                    self.numberOfItemToStoreTextField.stringValue = Constants.Common.storeItems.description
                 }
             }
         } else {
@@ -136,8 +140,8 @@ extension GeneralPreferencesViewController {
     // MARK: - Helper Methods
 
     private func saveStoreItems(storeItems: Int) {
-        Constants.storeItems = storeItems
-        UserDefaults.standard.set(storeItems, forKey: UserDefaultKeys.storeItems)
+        Constants.Common.storeItems = storeItems
+        UserDefaults.standard.set(storeItems, forKey: Constants.UserDefaultsKeys.storeItems)
     }
 
     private func alertDialog(withTitle title: String, message: String) -> NSAlert {

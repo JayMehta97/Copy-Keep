@@ -26,7 +26,7 @@ class CoreDataManager: NSObject {
 
     // MARK: - Properties
 
-    static let shared = CoreDataManager(modelName: Constants.coreDataModelName)
+    static let shared = CoreDataManager(modelName: Constants.CoreData.coreDataModelName)
 
     private let modelName: String
     private var fetchedCopyItemRC: NSFetchedResultsController<CopyItem>?

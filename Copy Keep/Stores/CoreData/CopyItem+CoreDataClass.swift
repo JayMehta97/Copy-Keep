@@ -20,7 +20,7 @@ public class CopyItem: NSManagedObject {
         let trailingString = "..."
 
         if var itemTitle = content, itemTitle.count > maximumTitleLength {
-            let numberOfCharactersToDrop = itemTitle.count - maximumTitleLength - trailingString.count
+            let numberOfCharactersToDrop = (itemTitle.count - maximumTitleLength) + trailingString.count
             itemTitle = itemTitle.dropLast(numberOfCharactersToDrop) + trailingString
             return itemTitle
         }

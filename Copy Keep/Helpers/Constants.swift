@@ -10,22 +10,35 @@ import Foundation
 
 struct Constants {
 
-    // MARK: - Properties
+    struct Application {
+        // MARK: - Properties
 
-    static let appName = "Copy Keep"
+        static let appName = "Copy Keep"
+        static let launcherAppId = "com.jaymehta.apps.Auto-Launcher"
+    }
 
-    static let launcherAppId = "com.jaymehta.apps.Auto-Launcher"
-    static let killLauncherNotificationName = "killLauncher"
+    struct Common {
+        // MARK: - Properties
 
-    static let coreDataModelName = "CopyKeep"
+        static let defaultStoreItems = 200
+        static var storeItems = defaultStoreItems
+    }
 
-    static let defaultStoreItems = 200
-    static var storeItems = defaultStoreItems
-}
+    struct CoreData {
+        // MARK: - Properties
 
-struct UserDefaultKeys {
+        static let coreDataModelName = "CopyKeep"
+    }
 
-    // MARK: - Properties
+    struct Notification {
+        // MARK: - Properties
 
-    static let storeItems = "storeItems"
+        static let killLauncherNotificationName = "killLauncher"
+    }
+
+    struct UserDefaultsKeys {
+        // MARK: - Properties
+
+        static let storeItems = "storeItems"
+    }
 }
