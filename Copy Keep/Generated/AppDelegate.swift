@@ -10,7 +10,7 @@ import Cocoa
 import ServiceManagement
 
 extension Notification.Name {
-    static let killLauncher = Notification.Name(Constants.killLauncherNotificationName)
+    static let killLauncher = Notification.Name(Constants.Notification.killLauncherNotificationName)
 }
 
 @NSApplicationMain
@@ -37,7 +37,7 @@ extension AppDelegate {
     // MARK: - Launcher related methods
 
     private func killLauncherApplication() {
-        let launcherAppId = Constants.launcherAppId
+        let launcherAppId = Constants.Application.launcherAppId
         let runningApps = NSWorkspace.shared.runningApplications
         let isRunning = !runningApps.filter { $0.bundleIdentifier == launcherAppId }.isEmpty
 
@@ -54,8 +54,8 @@ extension AppDelegate {
 
     private func setUserDefaults() {
         let defaults = UserDefaults.standard
-        if defaults.object(forKey: UserDefaultKeys.storeItems) != nil {
-            Constants.storeItems = defaults.integer(forKey: UserDefaultKeys.storeItems)
+        if defaults.object(forKey: Constants.UserDefaultsKeys.storeItems) != nil {
+            Constants.Common.storeItems = defaults.integer(forKey: Constants.UserDefaultsKeys.storeItems)
         }
     }
 }

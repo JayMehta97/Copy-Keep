@@ -12,7 +12,7 @@ class StatusItemBarViewModel {
 
     // MARK: - Properties
 
-    let statusBarImageName = "icon"
+    let statusBarImageName = "black-and-white-icon"
 
     let quitMenuItemTitle = "Quit"
     let quitMenuItemKey = "q"
@@ -55,8 +55,8 @@ class StatusItemBarViewModel {
             return
         }
 
-        if copyItems.count > Constants.storeItems {
-            for index in IndexSet(integersIn: Constants.storeItems..<copyItems.count).reversed() {
+        if copyItems.count > Constants.Common.storeItems {
+            for index in IndexSet(integersIn: Constants.Common.storeItems..<copyItems.count).reversed() {
                 CoreDataManager.shared.deleteItem(atIndex: IndexPath(item: index, section: 0))
             }
         }
