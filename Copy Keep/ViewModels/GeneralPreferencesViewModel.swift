@@ -30,12 +30,16 @@ class GeneralPreferencesViewModel {
         return "Delete \(selectedItems) " + (selectedItems > 1 ? "Items" : "Item")
     }
 
-    func getAlertTitle(forStoreItems storeItems: Int) -> String {
+    func getStoreItemsChangeAlertTitle(forStoreItems storeItems: Int) -> String {
         return "This will delete \(copyItems.count - storeItems) older items. Are you sure?"
     }
 
-    func getAlertMessage(forStoreItems storeItems: Int) -> String {
+    func getStoreItemsChangeAlertMessage(forStoreItems storeItems: Int) -> String {
         return "Decreasing store items value to lower than currently stored copied items will delete \(copyItems.count - storeItems) older items"
+    }
+
+    func getDeleteItemsAlertTitle(forSelectedItems selectedItems: Int) -> String {
+        return "Are you sure you want to delete \(selectedItems) selected items?"
     }
 
 }

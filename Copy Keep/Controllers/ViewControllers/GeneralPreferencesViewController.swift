@@ -34,8 +34,7 @@ class GeneralPreferencesViewController: NSViewController {
     // MARK: - User Interactions Methods
 
     @IBAction private func deleteItemsButtonPressed(_ sender: NSButton) {
-        generalPreferencesVM.deleteItems(forIndexes: copiedItemsTableView.selectedRowIndexes)
-        setupDeleteItemsButton(forSelectedItems: 0)
+        deleteSelectedItems()
     }
 
 }
@@ -122,12 +121,14 @@ extension GeneralPreferencesViewController: NSTextFieldDelegate {
         }
 
         if storeItems < generalPreferencesVM.copyItems.count, let window = view.window {
-            alertDialog(withTitle: generalPreferencesVM.getAlertTitle(forStoreItems: storeItems), message: generalPreferencesVM.getAlertMessage(forStoreItems: storeItems)).beginSheetModal(for: window) { response in
-                if response == .alertFirstButtonReturn {
-                    self.generalPreferencesVM.deleteAllItems(fromIndex: storeItems)
-                    self.saveStoreItems(storeItems: storeItems)
-                } else {
-                    self.numberOfItemToStoreTextField.stringValue = Constants.Common.storeItems.description
+            alertDialog(withTitle: generalPreferencesVM.getStoreItemsChangeAlertTitle(forStoreItems: storeItems), message: generalPreferencesVM.getStoreItemsChangeAlertMessage(forStoreItems: storeItems)).beginSheetModal(for: window) { response in
+                DispatchQueue.main.async {
+                    if response == .alertFirstButtonReturn {
+                        self.generalPreferencesVM.deleteAllItems(fromIndex: storeItems)
+                        self.saveStoreItems(storeItems: storeItems)
+                    } else {
+                        self.numberOfItemToStoreTextField.stringValue = Constants.Common.storeItems.description
+                    }
                 }
             }
         } else {
@@ -146,11 +147,31 @@ extension GeneralPreferencesViewController {
 
     private func alertDialog(withTitle title: String, message: String) -> NSAlert {
         let alert = NSAlert()
+        alert.alertStyle = .warning
+
         alert.messageText = title
         alert.informativeText = message
-        alert.alertStyle = .critical
+
         alert.addButton(withTitle: generalPreferencesVM.alertOkButtonTitle)
         alert.addButton(withTitle: generalPreferencesVM.alertCancelButtonTitle)
+
         return alert
+    }
+
+    private func deleteSelectedItems() {
+        guard let window = view.window else {
+            return
+        }
+
+        alertDialog(withTitle: generalPreferencesVM.getDeleteItemsAlertTitle(forSelectedItems: copiedItemsTableView.selectedRowIndexes.count), message: "").beginSheetModal(for: window) { response in
+            DispatchQueue.main.async {
+                if response == .alertFirstButtonReturn {
+                    self.generalPreferencesVM.deleteItems(forIndexes: self.copiedItemsTableView.selectedRowIndexes)
+                    self.setupDeleteItemsButton(forSelectedItems: 0)
+                } else {
+                    self.numberOfItemToStoreTextField.stringValue = Constants.Common.storeItems.description
+                }
+            }
+        }
     }
 }
