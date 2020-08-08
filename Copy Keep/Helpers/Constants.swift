@@ -14,6 +14,7 @@ struct Constants {
         // MARK: - Properties
 
         static let appName = "Copy Keep"
+        static let appUrl = "https://github.com/JayMehta97/Copy-Keep"
         static let launcherAppId = "com.jaymehta.apps.Auto-Launcher"
     }
 

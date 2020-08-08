@@ -678,7 +678,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="102" y="13"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="7C6-B5-vzd">
@@ -914,7 +914,7 @@
         <!--About View Controller-->
         <scene sceneID="Wpx-wM-50M">
             <objects>
-                <viewController storyboardIdentifier="AboutViewController" id="aut-Rp-VKb" customClass="AboutViewController" customModule="Copy_Keep" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutViewController" id="aut-Rp-VKb" customClass="AboutViewController" customModule="Copy_Keep" sceneMemberID="viewController">
                     <view key="view" id="7uZ-MT-tcv">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="430"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -972,6 +972,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="rateUsOnAppStoreButtonClicked:" target="aut-Rp-VKb" id="Aek-Ad-XK6"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hSV-Tk-Wla">
                                 <rect key="frame" x="53" y="28" width="84" height="20"/>
@@ -1020,6 +1023,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="writeToUsButtonClicked:" target="aut-Rp-VKb" id="M08-aB-MDV"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7B2-a8-4AG">
                                 <rect key="frame" x="338" y="28" width="104" height="20"/>
@@ -1051,10 +1057,13 @@
                                     <constraint firstAttribute="width" constant="40" id="mql-PM-0Y2"/>
                                     <constraint firstAttribute="height" constant="40" id="nEU-cl-PE2"/>
                                 </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="facebook" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="CgF-ic-UdE">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="email" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="CgF-ic-UdE">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="emailShareButtonClicked:" target="aut-Rp-VKb" id="jOg-EU-Jtw"/>
+                                </connections>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="hYq-x2-uuJ">
                                 <rect key="frame" x="226" y="65" width="40" height="40"/>
@@ -1062,10 +1071,13 @@
                                     <constraint firstAttribute="height" constant="40" id="Pk3-9I-ce3"/>
                                     <constraint firstAttribute="width" constant="40" id="UTU-cU-I9j"/>
                                 </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="twitter" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="oqd-F4-Twx">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="imessage" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="oqd-F4-Twx">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="messageShareButton:" target="aut-Rp-VKb" id="KNU-Zr-Bpg"/>
+                                </connections>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="Zac-XN-LUJ">
                                 <rect key="frame" x="276" y="65" width="40" height="40"/>
@@ -1077,6 +1089,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="copyLinkButtonClicked:" target="aut-Rp-VKb" id="oke-oR-xil"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -1113,6 +1128,11 @@
                             <constraint firstItem="hSV-Tk-Wla" firstAttribute="centerX" secondItem="gOb-2H-26H" secondAttribute="centerX" id="y0m-dh-rgQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="copyLinkButton" destination="Zac-XN-LUJ" id="PKM-tI-DfQ"/>
+                        <outlet property="emailShareButton" destination="DxJ-c6-RfN" id="h2e-vV-GG5"/>
+                        <outlet property="messageShareButton" destination="hYq-x2-uuJ" id="1Yb-cU-kbf"/>
+                    </connections>
                 </viewController>
                 <customObject id="oKM-if-Eep" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1121,8 +1141,8 @@
     </scenes>
     <resources>
         <image name="colored-icon" width="512" height="512"/>
-        <image name="facebook" width="256" height="256"/>
+        <image name="email" width="32" height="32"/>
+        <image name="imessage" width="64" height="64"/>
         <image name="link" width="50" height="50"/>
-        <image name="twitter" width="256" height="256"/>
     </resources>
 </document>
