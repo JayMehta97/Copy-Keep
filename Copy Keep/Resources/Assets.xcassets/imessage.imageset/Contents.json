@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "imessage.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "fb.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

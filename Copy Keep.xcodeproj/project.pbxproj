@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E501F5FC24DEF54B002FDCA0 /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E501F5FB24DEF54B002FDCA0 /* AboutViewModel.swift */; };
 		E523C16824B0DC24003417F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523C16724B0DC24003417F4 /* AppDelegate.swift */; };
 		E523C16A24B0DC24003417F4 /* StatusBarItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523C16924B0DC24003417F4 /* StatusBarItemController.swift */; };
 		E523C16C24B0DC27003417F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E523C16B24B0DC27003417F4 /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E501F5FB24DEF54B002FDCA0 /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
 		E523C16424B0DC24003417F4 /* Copy Keep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Copy Keep.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E523C16724B0DC24003417F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E523C16924B0DC24003417F4 /* StatusBarItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarItemController.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 		E523C17C24B0DE87003417F4 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				E501F5FB24DEF54B002FDCA0 /* AboutViewModel.swift */,
 				E5B6D2A524CB20BB002D2521 /* GeneralPreferencesViewModel.swift */,
 				E523C17D24B0DE9C003417F4 /* StatusItemBarViewModel.swift */,
 			);
@@ -417,6 +420,7 @@
 			files = (
 				E523C16A24B0DC24003417F4 /* StatusBarItemController.swift in Sources */,
 				E5621EB324B1CC53004D0DD9 /* PreferencesTabViewController.swift in Sources */,
+				E501F5FC24DEF54B002FDCA0 /* AboutViewModel.swift in Sources */,
 				E5AA75C824CC8AC2003E5787 /* CoreDataEntityDelegate.swift in Sources */,
 				E523C18324B0E44D003417F4 /* CopyKeep.xcdatamodeld in Sources */,
 				E5AA75CA24CC8AFF003E5787 /* CopyKeepExportItem.swift in Sources */,
