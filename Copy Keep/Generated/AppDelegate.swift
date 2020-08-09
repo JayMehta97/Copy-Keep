@@ -6,7 +6,12 @@
 //  Copyright © 2020 Jay Mehta. All rights reserved.
 //
 
+import AppCenter
+import AppCenterAnalytics
+import AppCenterCrashes
+
 import Cocoa
+
 import ServiceManagement
 
 extension Notification.Name {
@@ -22,7 +27,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+
         killLauncherApplication()
+
+        MSAppCenter.start("", withServices: [MSAnalytics.self, MSCrashes.self])
+
         setUserDefaults()
         statusBarItemController = StatusBarItemController()
     }
