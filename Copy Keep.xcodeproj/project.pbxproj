@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		E501F5FC24DEF54B002FDCA0 /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E501F5FB24DEF54B002FDCA0 /* AboutViewModel.swift */; };
+		E501F5FF24DF5498002FDCA0 /* AppCenterCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = E501F5FE24DF5498002FDCA0 /* AppCenterCrashes */; };
+		E501F60124DF5498002FDCA0 /* AppCenterAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E501F60024DF5498002FDCA0 /* AppCenterAnalytics */; };
 		E523C16824B0DC24003417F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523C16724B0DC24003417F4 /* AppDelegate.swift */; };
 		E523C16A24B0DC24003417F4 /* StatusBarItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523C16924B0DC24003417F4 /* StatusBarItemController.swift */; };
 		E523C16C24B0DC27003417F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E523C16B24B0DC27003417F4 /* Assets.xcassets */; };
@@ -90,6 +92,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5C5729F24B122D400C8348F /* ServiceManagement.framework in Frameworks */,
+				E501F5FF24DF5498002FDCA0 /* AppCenterCrashes in Frameworks */,
+				E501F60124DF5498002FDCA0 /* AppCenterAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +338,10 @@
 			dependencies = (
 			);
 			name = "Copy Keep";
+			packageProductDependencies = (
+				E501F5FE24DF5498002FDCA0 /* AppCenterCrashes */,
+				E501F60024DF5498002FDCA0 /* AppCenterAnalytics */,
+			);
 			productName = "Copy Keep";
 			productReference = E523C16424B0DC24003417F4 /* Copy Keep.app */;
 			productType = "com.apple.product-type.application";
@@ -382,6 +390,9 @@
 				Base,
 			);
 			mainGroup = E523C15B24B0DC24003417F4;
+			packageReferences = (
+				E501F5FD24DF5498002FDCA0 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */,
+			);
 			productRefGroup = E523C16524B0DC24003417F4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -699,6 +710,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E501F5FD24DF5498002FDCA0 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/microsoft/appcenter-sdk-apple.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.3.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E501F5FE24DF5498002FDCA0 /* AppCenterCrashes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E501F5FD24DF5498002FDCA0 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
+			productName = AppCenterCrashes;
+		};
+		E501F60024DF5498002FDCA0 /* AppCenterAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E501F5FD24DF5498002FDCA0 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
+			productName = AppCenterAnalytics;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E523C18124B0E44D003417F4 /* CopyKeep.xcdatamodeld */ = {

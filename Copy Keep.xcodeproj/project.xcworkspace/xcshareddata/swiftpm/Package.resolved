@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "App Center",
+        "repositoryURL": "https://github.com/microsoft/appcenter-sdk-apple.git",
+        "state": {
+          "branch": null,
+          "revision": "f2d162d08571cc66e07ee8960ef7cae7e2f79e2a",
+          "version": "3.3.2"
+        }
+      },
+      {
+        "package": "PLCrashReporter",
+        "repositoryURL": "https://github.com/microsoft/plcrashreporter.git",
+        "state": {
+          "branch": null,
+          "revision": "5e013e00ad342d8ccaae767fef5a1ef117514ce8",
+          "version": "1.7.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
