@@ -19,6 +19,8 @@
 		E523C18724B0ED51003417F4 /* CopyItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523C18524B0ED51003417F4 /* CopyItem+CoreDataClass.swift */; };
 		E523C18824B0ED51003417F4 /* CopyItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523C18624B0ED51003417F4 /* CopyItem+CoreDataProperties.swift */; };
 		E523C18A24B0ED93003417F4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523C18924B0ED93003417F4 /* CoreDataManager.swift */; };
+		E55F6B1F24E755330099C5B3 /* Secrets.swift.gyb in Resources */ = {isa = PBXBuildFile; fileRef = E55F6B1D24E755330099C5B3 /* Secrets.swift.gyb */; };
+		E55F6B2124E7E44C0099C5B3 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F6B2024E7E44C0099C5B3 /* Secrets.swift */; };
 		E5621EAA24B1CA8D004D0DD9 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5621EA924B1CA8D004D0DD9 /* Storyboard.swift */; };
 		E5621EAC24B1CB24004D0DD9 /* NSViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5621EAB24B1CB24004D0DD9 /* NSViewController+Extensions.swift */; };
 		E5621EAE24B1CBC1004D0DD9 /* NSWindowController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5621EAD24B1CBC1004D0DD9 /* NSWindowController+Extensions.swift */; };
@@ -65,6 +67,8 @@
 		E523C18524B0ED51003417F4 /* CopyItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CopyItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E523C18624B0ED51003417F4 /* CopyItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CopyItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E523C18924B0ED93003417F4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		E55F6B1D24E755330099C5B3 /* Secrets.swift.gyb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Secrets.swift.gyb; sourceTree = "<group>"; };
+		E55F6B2024E7E44C0099C5B3 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		E5621EA924B1CA8D004D0DD9 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		E5621EAB24B1CB24004D0DD9 /* NSViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Extensions.swift"; sourceTree = "<group>"; };
 		E5621EAD24B1CBC1004D0DD9 /* NSWindowController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindowController+Extensions.swift"; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 		E523C15B24B0DC24003417F4 = {
 			isa = PBXGroup;
 			children = (
+				E545F11224E04B850022487F /* Supporting Files */,
 				E523C16624B0DC24003417F4 /* Copy Keep */,
 				E5C5728C24B1221600C8348F /* Auto Launcher */,
 				E523C16524B0DC24003417F4 /* Products */,
@@ -144,6 +149,7 @@
 		E523C17724B0DCC5003417F4 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
+				E55F6B2024E7E44C0099C5B3 /* Secrets.swift */,
 				E523C16724B0DC24003417F4 /* AppDelegate.swift */,
 			);
 			path = Generated;
@@ -233,6 +239,14 @@
 				E5621EB924B25CEB004D0DD9 /* Constants.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E545F11224E04B850022487F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E55F6B1D24E755330099C5B3 /* Secrets.swift.gyb */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		E5621EB024B1CC01004D0DD9 /* WindowControllers */ = {
@@ -408,6 +422,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E55F6B1F24E755330099C5B3 /* Secrets.swift.gyb in Resources */,
 				E523C16C24B0DC27003417F4 /* Assets.xcassets in Resources */,
 				E523C16F24B0DC27003417F4 /* Main.storyboard in Resources */,
 			);
@@ -445,6 +460,7 @@
 				E523C18A24B0ED93003417F4 /* CoreDataManager.swift in Sources */,
 				E5621EAE24B1CBC1004D0DD9 /* NSWindowController+Extensions.swift in Sources */,
 				E5621EAA24B1CA8D004D0DD9 /* Storyboard.swift in Sources */,
+				E55F6B2124E7E44C0099C5B3 /* Secrets.swift in Sources */,
 				E5AA75CC24CCAB92003E5787 /* HyperlinkTextField.swift in Sources */,
 				E5621EBA24B25CEB004D0DD9 /* Constants.swift in Sources */,
 				E523C16824B0DC24003417F4 /* AppDelegate.swift in Sources */,
