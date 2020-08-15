@@ -30,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         killLauncherApplication()
 
-        MSAppCenter.start(Secrets.appCenterAppSecret, withServices: [MSAnalytics.self, MSCrashes.self])
+        MSAppCenter.start("", withServices: [MSAnalytics.self, MSCrashes.self])
 
         setUserDefaults()
         statusBarItemController = StatusBarItemController()
@@ -68,3 +68,4 @@ extension AppDelegate {
         }
     }
 }
+
