@@ -55,7 +55,6 @@ extension StatusBarItemController {
         }
     }
 
-
     private func setup() {
         constructMenu()
 
@@ -192,6 +191,8 @@ extension StatusBarItemController {
 
     @objc func clearAllCopyItemsClicked() {
         statusBarItemVM.clearAllCopyItems()
+
+        AnalyticsManager.shared.track(eventName: Constants.Analytics.keepsCleared)
     }
 
     @objc func copyMenuItemContentToPasteBoard(_ sender: Any?) {
@@ -203,6 +204,8 @@ extension StatusBarItemController {
 
         // We copy content of tooltip to clipboard as it has the full content of that CopyItem.
         pasteboard.setString(menuItem.toolTip ?? "", forType: .string)
+
+        AnalyticsManager.shared.track(eventName: Constants.Analytics.keepCopied)
     }
 
     @objc func openPreferences(_ sender: Any?) {
@@ -210,6 +213,7 @@ extension StatusBarItemController {
             preferencesWindowController = PreferencesWindowController.instantiate()
         }
         preferencesWindowController?.showWindow(self)
+
         NSApp.activate(ignoringOtherApps: true)
     }
 
@@ -221,5 +225,7 @@ extension StatusBarItemController {
                 self.statusBarItemVM.exportCopyItems(toFileUrl: url)
             }
         }
+
+        AnalyticsManager.shared.track(eventName: Constants.Analytics.keepsExported)
     }
 }
