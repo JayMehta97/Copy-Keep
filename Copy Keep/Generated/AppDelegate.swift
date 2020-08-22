@@ -6,12 +6,7 @@
 //  Copyright © 2020 Jay Mehta. All rights reserved.
 //
 
-import AppCenter
-import AppCenterAnalytics
-import AppCenterCrashes
-
 import Cocoa
-
 import ServiceManagement
 
 extension Notification.Name {
@@ -30,7 +25,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         killLauncherApplication()
 
-        MSAppCenter.start(Secrets.appCenterAppSecret, withServices: [MSAnalytics.self, MSCrashes.self])
+        AnalyticsManager.shared.initialize()
+        AnalyticsManager.shared.track(eventName: Constants.Analytics.copyKeepStarted)
 
         setUserDefaults()
         statusBarItemController = StatusBarItemController()
@@ -38,6 +34,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+
+        AnalyticsManager.shared.track(eventName: Constants.Analytics.copyKeepQuit)
     }
 
 }

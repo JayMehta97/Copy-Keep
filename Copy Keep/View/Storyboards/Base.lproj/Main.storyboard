@@ -831,7 +831,7 @@
                                     <constraint firstAttribute="width" constant="80" id="xhV-jd-y5U"/>
                                 </constraints>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Store Items:" id="gOc-yM-c0R">
-                                    <font key="font" metaFont="menu" size="14"/>
+                                    <font key="font" metaFont="menuBar"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>

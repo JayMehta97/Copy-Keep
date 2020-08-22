@@ -143,6 +143,8 @@ extension GeneralPreferencesViewController {
     private func saveStoreItems(storeItems: Int) {
         Constants.Common.storeItems = storeItems
         UserDefaults.standard.set(storeItems, forKey: Constants.UserDefaultsKeys.storeItems)
+
+        AnalyticsManager.shared.track(eventName: Constants.Analytics.storeItemsCountChanged, eventParameters: [Constants.Analytics.newStoreItemsCount: storeItems.description])
     }
 
     private func alertDialog(withTitle title: String, message: String) -> NSAlert {
@@ -168,8 +170,6 @@ extension GeneralPreferencesViewController {
                 if response == .alertFirstButtonReturn {
                     self.generalPreferencesVM.deleteItems(forIndexes: self.copiedItemsTableView.selectedRowIndexes)
                     self.setupDeleteItemsButton(forSelectedItems: 0)
-                } else {
-                    self.numberOfItemToStoreTextField.stringValue = Constants.Common.storeItems.description
                 }
             }
         }

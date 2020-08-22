@@ -59,6 +59,8 @@ extension GeneralPreferencesViewModel {
         for index in indexes.reversed() {
             CoreDataManager.shared.deleteItem(atIndex: IndexPath(item: index, section: 0))
         }
+
+        AnalyticsManager.shared.track(eventName: Constants.Analytics.keepsDeleted, eventParameters: [Constants.Analytics.numberOfItemsDeleted: indexes.count.description])
     }
 
     func deleteAllItems(fromIndex index: Int) {
