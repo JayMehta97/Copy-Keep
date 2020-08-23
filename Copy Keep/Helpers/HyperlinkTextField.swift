@@ -33,6 +33,4 @@ class HyperlinkTextField: NSTextField {
             NSWorkspace.shared.open(localHref)
         }
     }
-
 }
-

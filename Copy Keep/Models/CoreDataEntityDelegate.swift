@@ -9,6 +9,6 @@
 import Foundation
 
 struct CoreDataEntityDelegate {
-    let coreDataManagerDelegate: CoreDataManagerDelegate
+    weak var coreDataManagerDelegate: CoreDataManagerDelegate?
     let entity: Entity
 }

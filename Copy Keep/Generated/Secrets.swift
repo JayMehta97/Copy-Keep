@@ -1,4 +1,5 @@
 // This file was automatically generated and should not be edited.
+// swiftlint:disable all
 
 enum Secrets {
     private static let salt: [UInt8] = [
@@ -20,7 +21,7 @@ enum Secrets {
     }
 
     static func decode(_ encoded: [UInt8], cipher: [UInt8]) -> String {
-        String(decoding: encoded.enumerated().map { (offset, element) in
+        String(decoding: encoded.enumerated().map { offset, element in
             element ^ cipher[offset % cipher.count]
         }, as: UTF8.self)
     }

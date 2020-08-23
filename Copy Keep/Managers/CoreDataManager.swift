@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-protocol CoreDataManagerDelegate {
+protocol CoreDataManagerDelegate: class {
     func newItemInserted(atIndex index: IndexPath)
     func itemDeleted(atIndex index: IndexPath)
 }
@@ -22,7 +22,7 @@ class CoreDataManager: NSObject {
 
     // MARK: - Type Aliases
 
-    public typealias CoreDataManagerCompletion = () -> ()
+    public typealias CoreDataManagerCompletion = () -> Void
 
     // MARK: - Properties
 
@@ -70,7 +70,7 @@ class CoreDataManager: NSObject {
     }()
 
     private lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
-        return NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+        NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
     }()
 
     // MARK: - Initialization
@@ -125,7 +125,7 @@ extension CoreDataManager {
     }
 
     public func getCopyItems() -> [CopyItem]? {
-        return fetchedCopyItemRC?.fetchedObjects ?? nil
+        fetchedCopyItemRC?.fetchedObjects ?? nil
     }
 }
 
@@ -158,16 +158,17 @@ extension CoreDataManager {
 
         do {
             let options = [
-                NSMigratePersistentStoresAutomaticallyOption : true,
-                NSInferMappingModelAutomaticallyOption : true
+                NSMigratePersistentStoresAutomaticallyOption: true,
+                NSInferMappingModelAutomaticallyOption: true
             ]
 
             // Add Persistent Store
-            try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,
-                                                              configurationName: nil,
-                                                              at: persistentStoreURL,
-                                                              options: options)
-
+            try persistentStoreCoordinator.addPersistentStore(
+                ofType: NSSQLiteStoreType,
+                configurationName: nil,
+                at: persistentStoreURL,
+                options: options
+            )
         } catch {
             fatalError("Unable to Add Persistent Store")
         }
@@ -216,19 +217,19 @@ extension CoreDataManager: NSFetchedResultsControllerDelegate {
 
         switch type {
         case .insert:
-            delegates.forEach({ (delegate) in
+            delegates.forEach({ delegate in
                 if controller == fetchedCopyItemRC && delegate.entity == .copyItem {
-                    delegate.coreDataManagerDelegate.newItemInserted(atIndex: cellIndex)
+                    delegate.coreDataManagerDelegate?.newItemInserted(atIndex: cellIndex)
                 }
             })
         case .delete:
-            delegates.forEach({ (delegate) in
+            delegates.forEach({ delegate in
                 if controller == fetchedCopyItemRC && delegate.entity == .copyItem {
-                    delegate.coreDataManagerDelegate.itemDeleted(atIndex: cellIndex)
+                    delegate.coreDataManagerDelegate?.itemDeleted(atIndex: cellIndex)
                 }
             })
-        case.update:
-            print("update")
+        case .update:
+            print("Database Updated")
         default:
             break
         }

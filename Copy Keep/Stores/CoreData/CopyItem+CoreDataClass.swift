@@ -7,8 +7,8 @@
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 @objc(CopyItem)
 public class CopyItem: NSManagedObject {

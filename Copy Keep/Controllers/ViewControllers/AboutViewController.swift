@@ -31,25 +31,24 @@ class AboutViewController: NSViewController {
 
     // MARK: - User Interactions Methods
 
-    @IBAction func emailShareButtonClicked(_ sender: NSButton) {
+    @IBAction private func emailShareButtonClicked(_ sender: NSButton) {
         shareAppWithSharingService(forService: .composeEmail)
     }
 
-    @IBAction func messageShareButton(_ sender: NSButton) {
+    @IBAction private func messageShareButton(_ sender: NSButton) {
         shareAppWithSharingService(forService: .composeMessage)
     }
 
-    @IBAction func copyLinkButtonClicked(_ sender: NSButton) {
+    @IBAction private func copyLinkButtonClicked(_ sender: NSButton) {
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(Constants.Application.appUrl, forType: .string)
     }
 
-    @IBAction func rateUsOnAppStoreButtonClicked(_ sender: NSButton) {
+    @IBAction private func rateUsOnAppStoreButtonClicked(_ sender: NSButton) {
     }
 
-    @IBAction func writeToUsButtonClicked(_ sender: NSButton) {
+    @IBAction private func writeToUsButtonClicked(_ sender: NSButton) {
     }
-
 }
 
 extension AboutViewController {

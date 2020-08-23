@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct Constants {
+enum Constants {
 
-    struct Analytics {
+    enum Analytics {
         // MARK: - Analytic Event Names
 
         static let keepCopied = "Keep Copied"
@@ -30,7 +30,7 @@ struct Constants {
         static let newStoreItemsCount = "New Store Items Count"
     }
 
-    struct Application {
+    enum Application {
         // MARK: - Properties
 
         static let appName = "Copy Keep"
@@ -38,32 +38,32 @@ struct Constants {
         static let launcherAppId = "com.jaymehta.apps.Auto-Launcher"
     }
 
-    struct Common {
+    enum Common {
         // MARK: - Properties
 
         static let defaultStoreItems = 200
         static var storeItems = defaultStoreItems
     }
 
-    struct CoreData {
+    enum CoreData {
         // MARK: - Properties
 
         static let coreDataModelName = "CopyKeep"
     }
 
-    struct File {
+    enum File {
         // MARK: - Properties
 
         static let copyKeepItemsJson = "CopyKeep Items.json"
     }
 
-    struct Notification {
+    enum Notification {
         // MARK: - Properties
 
         static let killLauncherNotificationName = "killLauncher"
     }
 
-    struct UserDefaultsKeys {
+    enum UserDefaultsKeys {
         // MARK: - Properties
 
         static let storeItems = "storeItems"

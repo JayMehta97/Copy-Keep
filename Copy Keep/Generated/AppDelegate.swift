@@ -37,7 +37,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         AnalyticsManager.shared.track(eventName: Constants.Analytics.copyKeepQuit)
     }
-
 }
 
 extension AppDelegate {
@@ -51,7 +50,7 @@ extension AppDelegate {
         SMLoginItemSetEnabled(launcherAppId as CFString, true)
 
         if isRunning {
-            DistributedNotificationCenter.default().post(name: .killLauncher, object: Bundle.main.bundleIdentifier!)
+            DistributedNotificationCenter.default().post(name: .killLauncher, object: Bundle.main.bundleIdentifier)
         }
     }
 }

@@ -10,11 +10,10 @@ import Cocoa
 
 extension NSWindowController {
     public static var defaultNib: String {
-        return description().components(separatedBy: ".").dropFirst().joined(separator: ".")
+        description().components(separatedBy: ".").dropFirst().joined(separator: ".")
     }
 
     public static var storyboardIdentifier: String {
-        return description().components(separatedBy: ".").dropFirst().joined(separator: ".")
+        description().components(separatedBy: ".").dropFirst().joined(separator: ".")
     }
 }
-

@@ -16,5 +16,4 @@ class PreferencesTabViewController: NSTabViewController {
         super.viewDidLoad()
         // Do view setup here.
     }
-    
 }

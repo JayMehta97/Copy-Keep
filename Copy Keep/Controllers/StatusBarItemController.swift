@@ -21,7 +21,7 @@ class StatusBarItemController: NSObject {
 
     private let statusBarItemVM = StatusItemBarViewModel()
 
-    // MARK : - Initialization
+    // MARK: - Initialization
 
     override init() {
         super.init()
@@ -134,7 +134,6 @@ extension StatusBarItemController: CoreDataManagerDelegate {
     }
 }
 
-
 extension StatusBarItemController {
     // MARK: - Menu Items related methods
 
@@ -220,7 +219,7 @@ extension StatusBarItemController {
     @objc func exportMenuItemClicked() {
         let savePanel = NSSavePanel()
         savePanel.nameFieldStringValue = Constants.File.copyKeepItemsJson
-        savePanel.begin { (result) in
+        savePanel.begin { result in
             if let url = savePanel.url, result == .OK {
                 self.statusBarItemVM.exportCopyItems(toFileUrl: url)
             }
