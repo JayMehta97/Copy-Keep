@@ -94,7 +94,7 @@ extension StatusItemBarViewModel {
     // MARK: - Get data methods
 
     func getCopyItems() -> [CopyItem]? {
-        return CoreDataManager.shared.getCopyItems()
+        CoreDataManager.shared.getCopyItems()
     }
 
     // MARK: - Insert data methods
@@ -124,4 +124,3 @@ extension StatusItemBarViewModel {
         }
     }
 }
-

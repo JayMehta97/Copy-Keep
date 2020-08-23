@@ -36,7 +36,6 @@ class GeneralPreferencesViewController: NSViewController {
     @IBAction private func deleteItemsButtonPressed(_ sender: NSButton) {
         deleteSelectedItems()
     }
-
 }
 
 extension GeneralPreferencesViewController {
@@ -73,7 +72,7 @@ extension GeneralPreferencesViewController: NSTableViewDataSource {
     // MARK: - NSTableViewDataSource methods
 
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return generalPreferencesVM.copyItems.count
+        generalPreferencesVM.copyItems.count
     }
 }
 
@@ -121,7 +120,10 @@ extension GeneralPreferencesViewController: NSTextFieldDelegate {
         }
 
         if storeItems < generalPreferencesVM.copyItems.count, let window = view.window {
-            alertDialog(withTitle: generalPreferencesVM.getStoreItemsChangeAlertTitle(forStoreItems: storeItems), message: generalPreferencesVM.getStoreItemsChangeAlertMessage(forStoreItems: storeItems)).beginSheetModal(for: window) { response in
+            alertDialog(
+                withTitle: generalPreferencesVM.getStoreItemsChangeAlertTitle(forStoreItems: storeItems),
+                message: generalPreferencesVM.getStoreItemsChangeAlertMessage(forStoreItems: storeItems)
+            ).beginSheetModal(for: window) { response in
                 DispatchQueue.main.async {
                     if response == .alertFirstButtonReturn {
                         self.generalPreferencesVM.deleteAllItems(fromIndex: storeItems)

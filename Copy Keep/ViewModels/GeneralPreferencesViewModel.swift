@@ -27,21 +27,20 @@ class GeneralPreferencesViewModel {
     }
 
     func getTitleForDeleteItemsButton(selectedItems: Int) -> String {
-        return "Delete \(selectedItems) " + (selectedItems > 1 ? "Items" : "Item")
+        "Delete \(selectedItems) " + (selectedItems > 1 ? "Items" : "Item")
     }
 
     func getStoreItemsChangeAlertTitle(forStoreItems storeItems: Int) -> String {
-        return "This will delete \(copyItems.count - storeItems) older items. Are you sure?"
+        "This will delete \(copyItems.count - storeItems) older items. Are you sure?"
     }
 
     func getStoreItemsChangeAlertMessage(forStoreItems storeItems: Int) -> String {
-        return "Decreasing store items value to lower than currently stored copied items will delete \(copyItems.count - storeItems) older items"
+        "Decreasing store items value to lower than currently stored copied items will delete \(copyItems.count - storeItems) older items"
     }
 
     func getDeleteItemsAlertTitle(forSelectedItems selectedItems: Int) -> String {
-        return "Are you sure you want to delete \(selectedItems) selected items?"
+        "Are you sure you want to delete \(selectedItems) selected items?"
     }
-
 }
 
 // MARK: - CoreData Operations
@@ -50,7 +49,7 @@ extension GeneralPreferencesViewModel {
     // MARK: - Get data methods
 
     func getCopyItems() -> [CopyItem]? {
-        return CoreDataManager.shared.getCopyItems()
+        CoreDataManager.shared.getCopyItems()
     }
 
     // MARK: - Remove data methods

@@ -20,7 +20,7 @@ class PreferencesWindowController: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
-    
+
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     }
 
@@ -30,5 +30,4 @@ class PreferencesWindowController: NSWindowController {
         self.window?.styleMask.insert(.fullSizeContentView)
         self.window?.title = Constants.Application.appName
     }
-
 }

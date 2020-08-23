@@ -19,6 +19,7 @@
 		E523C18724B0ED51003417F4 /* CopyItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523C18524B0ED51003417F4 /* CopyItem+CoreDataClass.swift */; };
 		E523C18824B0ED51003417F4 /* CopyItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523C18624B0ED51003417F4 /* CopyItem+CoreDataProperties.swift */; };
 		E523C18A24B0ED93003417F4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523C18924B0ED93003417F4 /* CoreDataManager.swift */; };
+		E55B72CF24F1E96900F337CE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E55B72CE24F1E96900F337CE /* .swiftlint.yml */; };
 		E55F6B1F24E755330099C5B3 /* Secrets.swift.gyb in Resources */ = {isa = PBXBuildFile; fileRef = E55F6B1D24E755330099C5B3 /* Secrets.swift.gyb */; };
 		E55F6B2124E7E44C0099C5B3 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F6B2024E7E44C0099C5B3 /* Secrets.swift */; };
 		E55F6B2524E9CCDF0099C5B3 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F6B2424E9CCDF0099C5B3 /* AnalyticsManager.swift */; };
@@ -68,6 +69,7 @@
 		E523C18524B0ED51003417F4 /* CopyItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CopyItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E523C18624B0ED51003417F4 /* CopyItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CopyItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E523C18924B0ED93003417F4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		E55B72CE24F1E96900F337CE /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E55F6B1D24E755330099C5B3 /* Secrets.swift.gyb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Secrets.swift.gyb; sourceTree = "<group>"; };
 		E55F6B2024E7E44C0099C5B3 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		E55F6B2424E9CCDF0099C5B3 /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				E55F6B1D24E755330099C5B3 /* Secrets.swift.gyb */,
+				E55B72CE24F1E96900F337CE /* .swiftlint.yml */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				E523C16124B0DC24003417F4 /* Frameworks */,
 				E523C16224B0DC24003417F4 /* Resources */,
 				E5C5729B24B122A000C8348F /* CopyFiles */,
+				E55B72CB24F1E89900F337CE /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -433,6 +437,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E55B72CF24F1E96900F337CE /* .swiftlint.yml in Resources */,
 				E55F6B1F24E755330099C5B3 /* Secrets.swift.gyb in Resources */,
 				E523C16C24B0DC27003417F4 /* Assets.xcassets in Resources */,
 				E523C16F24B0DC27003417F4 /* Main.storyboard in Resources */,
@@ -449,6 +454,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E55B72CB24F1E89900F337CE /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint and install it using Mint.\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E523C16024B0DC24003417F4 /* Sources */ = {

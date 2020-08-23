@@ -9,7 +9,9 @@
 import Cocoa
 
 enum Storyboard: String {
+    // swiftlint:disable identifier_name
     case Main
+    // swiftlint:enable identifier_name
 
     public func instantiate<VC: NSViewController>(_ viewController: VC.Type, inBundle bundle: Bundle = Bundle.main) -> VC {
         guard let viewController = NSStoryboard(name: self.rawValue, bundle: bundle).instantiateController(withIdentifier: VC.storyboardIdentifier) as? VC else {
@@ -25,5 +27,3 @@ enum Storyboard: String {
         return windowController
     }
 }
-
-

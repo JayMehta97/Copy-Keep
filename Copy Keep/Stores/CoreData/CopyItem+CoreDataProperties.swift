@@ -7,17 +7,15 @@
 //
 //
 
-import Foundation
 import CoreData
-
+import Foundation
 
 extension CopyItem {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<CopyItem> {
-        return NSFetchRequest<CopyItem>(entityName: "CopyItem")
+        NSFetchRequest<CopyItem>(entityName: "CopyItem")
     }
 
     @NSManaged public var content: String?
     @NSManaged public var createdAt: Date?
-
 }
